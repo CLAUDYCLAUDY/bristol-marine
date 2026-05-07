@@ -368,6 +368,54 @@
     max-width: 38em;
   }
 
+  /* ============== BANDEAU PLEINE LARGEUR ============== */
+  .banner {
+    width: 100%;
+    height: clamp(280px, 38vw, 520px);
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+    padding: 0;
+  }
+  .banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 12s ease-out;
+  }
+  .banner:hover img { transform: scale(1.04); }
+  .banner__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(14, 26, 46, 0.05) 0%, rgba(14, 26, 46, 0.25) 100%);
+    pointer-events: none;
+  }
+  .banner__caption {
+    position: absolute;
+    bottom: 2rem;
+    left: var(--gut);
+    right: var(--gut);
+    color: var(--ivoire-pale);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.1rem, 2vw, 1.6rem);
+    line-height: 1.4;
+    text-shadow: 0 2px 16px rgba(14, 26, 46, 0.7);
+    max-width: var(--max);
+    margin: 0 auto;
+    z-index: 2;
+  }
+  .banner__caption::before {
+    content: "";
+    display: block;
+    width: 36px;
+    height: 1px;
+    background: var(--ivoire-pale);
+    margin-bottom: 0.8rem;
+    opacity: 0.7;
+  }
+
   /* ============== HISTOIRE ============== */
   .histoire {
     background: var(--ivoire-pale);
@@ -1136,6 +1184,15 @@
   </div>
 </section>
 
+<!-- ============== BANDEAU 1 ============== -->
+<div class="banner reveal">
+  <img src="banner-1.jpg" alt="Détail nautique — l'art de l'amarrage" loading="lazy" />
+  <div class="banner__overlay"></div>
+  <div class="banner__caption">
+    « Connaître chaque coque, chaque cordage, chaque silence du port. »
+  </div>
+</div>
+
 <!-- ============== SERVICES ============== -->
 <section class="services" id="services">
   <div class="section__inner">
@@ -1261,6 +1318,15 @@
     </div>
   </div>
 </section>
+
+<!-- ============== BANDEAU 2 ============== -->
+<div class="banner reveal">
+  <img src="banner-2.jpg" alt="Pavillon et pare-battage — l'élégance du yachting" loading="lazy" />
+  <div class="banner__overlay"></div>
+  <div class="banner__caption">
+    « L'élégance se reconnaît à l'attention portée à chaque détail. »
+  </div>
+</div>
 
 <!-- ============== RESERVATION ============== -->
 <section class="reserver" id="reserver">
