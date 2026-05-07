@@ -18,15 +18,15 @@
     --ivoire-pale:   #fbf7ef;
     --sable:         #e9dfcd;
     --sable-fonce:   #c9b89a;
-    --vert-bristol:  #1f5f2d;
-    --vert-fonce:    #143d1c;
-    --vert-clair:    #2e7a3f;
+    --vert-bristol:  #5B9396;
+    --vert-fonce:    #3D6F72;
+    --vert-clair:    #7AC5C8;
     --marine:        #1a2a44;
     --marine-fonce:  #0e1a2e;
     --or-pale:       #b89968;
     --texte:         #1a2a44;
     --texte-doux:    #4a5568;
-    --ligne:         rgba(31, 95, 45, 0.18);
+    --ligne:         rgba(91, 147, 150, 0.18);
 
     --serif: 'Cormorant Garamond', 'Times New Roman', serif;
     --sans:  'Jost', -apple-system, sans-serif;
@@ -157,7 +157,7 @@
     position: relative;
     display: flex; align-items: center;
     background:
-      radial-gradient(ellipse at top right, rgba(31, 95, 45, 0.06), transparent 55%),
+      radial-gradient(ellipse at top right, rgba(91, 147, 150, 0.06), transparent 55%),
       radial-gradient(ellipse at bottom left, rgba(26, 42, 68, 0.05), transparent 50%),
       linear-gradient(180deg, var(--ivoire) 0%, var(--ivoire-pale) 100%);
     overflow: hidden;
@@ -240,7 +240,7 @@
   .btn--primary:hover {
     background: var(--vert-fonce);
     transform: translateY(-2px);
-    box-shadow: 0 12px 24px -8px rgba(31, 95, 45, 0.4);
+    box-shadow: 0 12px 24px -8px rgba(91, 147, 150, 0.4);
   }
   .btn--ghost {
     background: transparent;
@@ -655,7 +655,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(circle at 80% 20%, rgba(31, 95, 45, 0.15), transparent 50%);
+    background-image: radial-gradient(circle at 80% 20%, rgba(91, 147, 150, 0.15), transparent 50%);
     pointer-events: none;
   }
   .expertise h2, .expertise h3 { color: var(--ivoire); }
@@ -840,7 +840,7 @@
     outline: none;
     border-color: var(--vert-bristol);
     background: var(--ivoire);
-    box-shadow: 0 0 0 3px rgba(31, 95, 45, 0.08);
+    box-shadow: 0 0 0 3px rgba(91, 147, 150, 0.08);
   }
   .field textarea { min-height: 120px; resize: vertical; font-family: var(--sans); }
   .field select { cursor: pointer; }
@@ -928,7 +928,7 @@
     display: none;
   }
   .form-feedback.show { display: block; }
-  .form-feedback.ok { background: rgba(31, 95, 45, 0.08); color: var(--vert-fonce); border-left: 3px solid var(--vert-bristol); }
+  .form-feedback.ok { background: rgba(91, 147, 150, 0.08); color: var(--vert-fonce); border-left: 3px solid var(--vert-bristol); }
   .form-feedback.err { background: rgba(220, 80, 80, 0.08); color: #8a2a2a; border-left: 3px solid #8a2a2a; }
 
   /* ============== CONTACT GENERAL ============== */
@@ -992,9 +992,10 @@
     height: 100px; width: auto;
     margin-bottom: 1.4rem;
     background: var(--ivoire);
-    padding: 12px 18px;
-    border-radius: 2px;
+    padding: 14px 20px;
+    border-radius: 3px;
     display: block;
+    box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.4);
   }
   .foot__brand p {
     font-family: var(--serif);
@@ -1562,7 +1563,7 @@
 <footer>
   <div class="foot">
     <div class="foot__brand">
-      <img src="logo-light.png" alt="Bristol Marine" />
+      <img src="logo.jpeg" alt="Bristol Marine" />
       <p>« L'art de la mer, en héritage. »<br/>Maison nautique fondée en 1959.</p>
     </div>
     <div>
