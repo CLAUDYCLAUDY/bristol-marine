@@ -100,23 +100,10 @@
     display: flex; align-items: center; gap: 0.85rem;
     text-decoration: none;
   }
-  .nav__brand img { height: 44px; width: auto; transition: height 0.4s; }
-  .nav.scrolled .nav__brand img { height: 36px; }
+  .nav__brand img { height: 56px; width: auto; transition: height 0.4s; }
+  .nav.scrolled .nav__brand img { height: 44px; }
   .nav__brand-text {
-    font-family: var(--serif);
-    font-size: 1.35rem;
-    color: var(--vert-fonce);
-    letter-spacing: 0.04em;
-    font-weight: 500;
-  }
-  .nav__brand-text small {
-    display: block;
-    font-family: var(--sans);
-    font-size: 0.6rem;
-    letter-spacing: 0.28em;
-    color: var(--texte-doux);
-    font-weight: 400;
-    margin-top: 2px;
+    display: none; /* Le logo contient déjà le nom de la marque */
   }
   .nav__links { display: flex; gap: 2.5rem; align-items: center; }
   .nav__links a {
@@ -274,37 +261,60 @@
     position: relative;
     aspect-ratio: 4 / 5;
     background: linear-gradient(135deg, var(--sable) 0%, var(--ivoire-pale) 100%);
-    border: 1px solid var(--ligne);
     overflow: hidden;
     opacity: 0; animation: rise 1.2s 0.5s forwards;
+    box-shadow: 0 30px 60px -20px rgba(26, 42, 68, 0.25);
   }
-  .hero__visual::before {
+  .hero__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 8s ease;
+  }
+  .hero__visual:hover img { transform: scale(1.04); }
+  .hero__visual::after {
     content: "";
     position: absolute;
-    inset: 12%;
-    background: url('logo.jpeg') center/contain no-repeat;
-    opacity: 0.85;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(14, 26, 46, 0.45) 100%);
+    pointer-events: none;
   }
-  .hero__visual::after {
-    content: "1959";
+  .hero__caption {
     position: absolute;
-    bottom: 1.5rem; right: 1.5rem;
+    bottom: 1.8rem; left: 1.8rem;
+    right: 1.8rem;
+    color: var(--ivoire-pale);
+    z-index: 2;
     font-family: var(--serif);
-    font-size: 4rem;
     font-style: italic;
-    color: var(--vert-bristol);
-    opacity: 0.4;
-    line-height: 1;
+    font-size: 1rem;
+    line-height: 1.4;
+    text-shadow: 0 2px 12px rgba(14, 26, 46, 0.6);
+  }
+  .hero__caption small {
+    display: block;
+    font-family: var(--sans);
+    font-style: normal;
+    font-size: 0.65rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    margin-top: 0.4rem;
+    opacity: 0.85;
   }
   .hero__badge {
     position: absolute;
     top: 1.5rem; left: 1.5rem;
+    background: rgba(246, 241, 232, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border: 1px solid var(--vert-bristol);
     color: var(--vert-bristol);
-    padding: 0.4rem 0.9rem;
+    padding: 0.45rem 0.95rem;
     font-size: 0.65rem;
     letter-spacing: 0.3em;
     font-weight: 500;
+    z-index: 2;
   }
 
   .hero__locations {
@@ -501,8 +511,8 @@
   .yacht__placeholder::before {
     content: "";
     position: absolute; inset: 0;
-    background: url('logo.jpeg') center/40% no-repeat;
-    opacity: 0.18;
+    background: url('logo-light.png') center/40% no-repeat;
+    opacity: 0.22;
   }
   .yacht__tag {
     position: absolute;
@@ -688,8 +698,8 @@
     position: absolute;
     bottom: -40px; right: -40px;
     width: 200px; height: 200px;
-    background: url('logo.jpeg') center/contain no-repeat;
-    opacity: 0.08;
+    background: url('logo-light.png') center/contain no-repeat;
+    opacity: 0.12;
   }
   .form-aside h3 {
     color: var(--ivoire);
@@ -930,7 +940,14 @@
     gap: 3rem;
     margin-bottom: 3rem;
   }
-  .foot__brand img { height: 60px; margin-bottom: 1.2rem; }
+  .foot__brand img {
+    height: 100px; width: auto;
+    margin-bottom: 1.4rem;
+    background: var(--ivoire);
+    padding: 12px 18px;
+    border-radius: 2px;
+    display: block;
+  }
   .foot__brand p {
     font-family: var(--serif);
     font-style: italic;
@@ -1067,13 +1084,17 @@
     </div>
     <div class="hero__visual">
       <span class="hero__badge">Est. 1959</span>
+      <img src="hero.jpg" alt="Bristol Marine — Port des Fourmis, Beaulieu-sur-Mer" loading="eager" />
+      <div class="hero__caption">
+        Le cabanon historique
+        <small>Port des Fourmis · Beaulieu-sur-Mer</small>
+      </div>
     </div>
   </div>
   <div class="hero__locations">
     <span>Beaulieu-sur-Mer</span>
-    <span>Monaco</span>
-    <span>Émirats Arabes Unis</span>
-    <span>Asie du Sud-Est</span>
+    <span>Dubai Marina</span>
+    <span>Phuket · Thaïlande</span>
   </div>
 </header>
 
@@ -1266,7 +1287,7 @@
         <div class="form-aside__contact">
           <div>
             <strong>Téléphone</strong>
-            <a href="tel:+33000000000">+33 (0)0 00 00 00 00</a>
+            <a href="tel:+33612797247">+33 (0)6 12 79 72 47</a>
           </div>
           <div>
             <strong>Courriel</strong>
@@ -1452,21 +1473,19 @@
         <div class="contact-card__title">Beaulieu-sur-Mer</div>
         <div class="contact-card__country">France · Siège</div>
         <p>Port des Fourmis<br/>06310 Beaulieu-sur-Mer</p>
-        <a href="tel:+33000000000">+33 (0)0 00 00 00 00</a>
+        <a href="tel:+33612797247">+33 (0)6 12 79 72 47</a>
         <a href="mailto:contact@bristolmarine.fr">contact@bristolmarine.fr</a>
       </div>
       <div class="contact-card">
         <div class="contact-card__title">Dubaï</div>
         <div class="contact-card__country">Émirats Arabes Unis</div>
-        <p>Bureau de représentation<br/>Marina &amp; Golf area</p>
-        <a href="mailto:uae@bristolmarine.fr">uae@bristolmarine.fr</a>
+        <p>Dubai Marina<br/>Émirats Arabes Unis</p>
         <a href="#reserver">Demander un rendez-vous →</a>
       </div>
       <div class="contact-card">
         <div class="contact-card__title">Phuket</div>
-        <div class="contact-card__country">Asie du Sud-Est</div>
-        <p>Bureau de représentation<br/>Asie · Pacifique</p>
-        <a href="mailto:asia@bristolmarine.fr">asia@bristolmarine.fr</a>
+        <div class="contact-card__country">Thaïlande</div>
+        <p>Phuket<br/>Thaïlande</p>
         <a href="#reserver">Demander un rendez-vous →</a>
       </div>
     </div>
@@ -1477,7 +1496,7 @@
 <footer>
   <div class="foot">
     <div class="foot__brand">
-      <img src="logo.jpeg" alt="Bristol Marine" />
+      <img src="logo-light.png" alt="Bristol Marine" />
       <p>« L'art de la mer, en héritage. »<br/>Maison nautique fondée en 1959.</p>
     </div>
     <div>
