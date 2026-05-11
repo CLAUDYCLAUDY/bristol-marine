@@ -324,26 +324,41 @@
   }
 
   .hero__locations {
-    position: absolute;
-    bottom: 2rem;
-    left: var(--gut);
-    right: var(--gut);
-    max-width: var(--max);
-    margin: 0 auto;
-    display: flex; gap: 3rem; flex-wrap: wrap;
-    font-size: 0.7rem;
-    letter-spacing: 0.28em;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--ligne);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 1.8rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.26em;
     text-transform: uppercase;
     color: var(--texte-doux);
-    opacity: 0; animation: rise 1.2s 1.2s forwards;
+    opacity: 0; animation: rise 1.2s 1s forwards;
   }
-  .hero__locations span { display: flex; align-items: center; gap: 0.5rem; }
-  .hero__locations span::before {
+  .hero__locations-label {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.95rem;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--vert-bristol);
+    margin-right: 0.5rem;
+  }
+  .hero__locations span:not(.hero__locations-label) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    white-space: nowrap;
+  }
+  .hero__locations span:not(.hero__locations-label)::before {
     content: "";
-    width: 6px; height: 6px;
+    width: 5px; height: 5px;
     background: var(--vert-bristol);
     border-radius: 50%;
     display: inline-block;
+    flex-shrink: 0;
   }
 
   /* ============== SECTIONS COMMUNES ============== */
@@ -1076,9 +1091,8 @@
       width: 100%;
     }
     .hero__locations {
-      position: static;
+      gap: 0.4rem 1.4rem;
       margin-top: 2.5rem;
-      gap: 1.5rem 2rem;
     }
 
     section { padding: 5rem var(--gut); }
@@ -1183,10 +1197,16 @@
     }
     .hero__locations {
       flex-direction: column;
-      gap: 0.9rem;
-      margin-top: 2rem;
-      font-size: 0.65rem;
+      align-items: flex-start;
+      gap: 0.7rem;
+      margin-top: 2.2rem;
+      padding-top: 1.6rem;
+      font-size: 0.66rem;
       letter-spacing: 0.24em;
+    }
+    .hero__locations-label {
+      font-size: 0.88rem;
+      margin-bottom: 0.2rem;
     }
 
     /* Sections */
@@ -1395,6 +1415,12 @@
           Réserver un charter
         </a>
       </div>
+      <div class="hero__locations">
+        <span class="hero__locations-label">Présents à</span>
+        <span>Beaulieu-sur-Mer</span>
+        <span>Dubai Marina</span>
+        <span>Phuket · Thaïlande</span>
+      </div>
     </div>
     <div class="hero__visual">
       <span class="hero__badge">Est. 1959</span>
@@ -1404,11 +1430,6 @@
         <small>Port des Fourmis · Beaulieu-sur-Mer</small>
       </div>
     </div>
-  </div>
-  <div class="hero__locations">
-    <span>Beaulieu-sur-Mer</span>
-    <span>Dubai Marina</span>
-    <span>Phuket · Thaïlande</span>
   </div>
 </header>
 
@@ -1420,7 +1441,7 @@
         <span class="eyebrow">La Maison</span>
       </div>
       <div>
-        <h2>Une lignée de <em>marins</em>, une signature.</h2>
+        <h2>Une lignée de <em>passionnés de la mer</em>, une signature.</h2>
         <p style="margin-top: 1.5rem;">
           Bristol Marine est née sur les pontons du Port des Fourmis, à Beaulieu-sur-Mer, en 1959. Trois générations s'y sont succédé, transmettant la même exigence : connaître chaque coque, chaque équipage, chaque baie de la Méditerranée.
         </p>
