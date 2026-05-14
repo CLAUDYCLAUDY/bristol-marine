@@ -1,0 +1,2168 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#5B9396" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="Bristol Marine" />
+<meta name="format-detection" content="telephone=yes" />
+<title>Bristol Marine — Yacht Brokerage & Charter — France · UAE · Asia</title>
+<meta name="description" content="Bristol Marine — Maison nautique fondée en 1959. Vente, charter et gestion de yachts entre la Riviera, les Émirats et l'Asie." />
+<link rel="icon" type="image/jpeg" href="logo.jpeg" />
+<link rel="apple-touch-icon" href="logo.jpeg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  /* ============== TOKENS ============== */
+  :root {
+    --ivoire:        #f6f1e8;
+    --ivoire-pale:   #fbf7ef;
+    --sable:         #e9dfcd;
+    --sable-fonce:   #c9b89a;
+    --vert-bristol:  #5B9396;
+    --vert-fonce:    #3D6F72;
+    --vert-clair:    #7AC5C8;
+    --marine:        #1a2a44;
+    --marine-fonce:  #0e1a2e;
+    --or-pale:       #b89968;
+    --texte:         #1a2a44;
+    --texte-doux:    #4a5568;
+    --ligne:         rgba(91, 147, 150, 0.18);
+
+    --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+    --sans:  'Jost', -apple-system, sans-serif;
+
+    --max: 1280px;
+    --gut: clamp(1.5rem, 4vw, 4rem);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: var(--sans);
+    font-weight: 300;
+    color: var(--texte);
+    background: var(--ivoire);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--vert-bristol); color: var(--ivoire-pale); }
+
+  img { max-width: 100%; display: block; }
+
+  /* ============== TYPO ============== */
+  h1, h2, h3, h4 {
+    font-family: var(--serif);
+    font-weight: 400;
+    letter-spacing: 0.005em;
+    color: var(--marine);
+    line-height: 1.15;
+  }
+
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--vert-bristol);
+    display: inline-block;
+  }
+  .eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 28px; height: 1px;
+    background: var(--vert-bristol);
+    vertical-align: middle;
+    margin-right: 14px;
+  }
+
+  /* ============== NAV ============== */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.25rem var(--gut);
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(246, 241, 232, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: all 0.4s ease;
+  }
+  .nav.scrolled {
+    padding: 0.85rem var(--gut);
+    border-bottom-color: var(--ligne);
+    background: rgba(246, 241, 232, 0.95);
+  }
+  .nav__brand {
+    display: flex; align-items: center; gap: 0.85rem;
+    text-decoration: none;
+  }
+  .nav__brand img { height: 56px; width: auto; transition: height 0.4s; }
+  .nav.scrolled .nav__brand img { height: 44px; }
+  .nav__brand-text {
+    display: none; /* Le logo contient déjà le nom de la marque */
+  }
+  .nav__links { display: flex; gap: 2.5rem; align-items: center; }
+  .nav__links a {
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--texte);
+    text-decoration: none;
+    font-weight: 400;
+    position: relative;
+    transition: color 0.3s;
+  }
+  .nav__links a::after {
+    content: "";
+    position: absolute; left: 0; bottom: -6px;
+    height: 1px; width: 0;
+    background: var(--vert-bristol);
+    transition: width 0.4s ease;
+  }
+  .nav__links a:hover { color: var(--vert-bristol); }
+  .nav__links a:hover::after { width: 100%; }
+  .nav__cta {
+    background: var(--vert-bristol);
+    color: var(--ivoire-pale) !important;
+    padding: 0.7rem 1.4rem;
+    border-radius: 2px;
+    transition: background 0.3s !important;
+  }
+  .nav__cta::after { display: none !important; }
+  .nav__cta:hover { background: var(--vert-fonce); color: var(--ivoire-pale) !important; }
+
+  .nav__burger {
+    display: none;
+    background: none; border: none;
+    width: 30px; height: 24px; cursor: pointer;
+    position: relative;
+  }
+  .nav__burger span {
+    position: absolute; left: 0; right: 0;
+    height: 1.5px; background: var(--marine);
+    transition: all 0.3s;
+  }
+  .nav__burger span:nth-child(1) { top: 4px; }
+  .nav__burger span:nth-child(2) { top: 11px; }
+  .nav__burger span:nth-child(3) { top: 18px; }
+
+  /* ============== HERO ============== */
+  .hero {
+    min-height: 100vh;
+    padding: 8rem var(--gut) 4rem;
+    position: relative;
+    display: flex; align-items: center;
+    background:
+      radial-gradient(ellipse at top right, rgba(91, 147, 150, 0.06), transparent 55%),
+      radial-gradient(ellipse at bottom left, rgba(26, 42, 68, 0.05), transparent 50%),
+      linear-gradient(180deg, var(--ivoire) 0%, var(--ivoire-pale) 100%);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(26, 42, 68, 0.08) 1px, transparent 0);
+    background-size: 32px 32px;
+    opacity: 0.4;
+    pointer-events: none;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  }
+
+  .hero__inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero__content > * { opacity: 0; transform: translateY(20px); animation: rise 1s forwards; }
+  .hero__content > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero__content > *:nth-child(2) { animation-delay: 0.3s; }
+  .hero__content > *:nth-child(3) { animation-delay: 0.55s; }
+  .hero__content > *:nth-child(4) { animation-delay: 0.75s; }
+  @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+
+  .hero h1 {
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 300;
+    line-height: 1.02;
+    margin: 1.5rem 0;
+    color: var(--marine);
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--vert-bristol);
+    font-weight: 400;
+  }
+  .hero p.lede {
+    font-family: var(--serif);
+    font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--texte-doux);
+    max-width: 32em;
+    line-height: 1.5;
+    margin-bottom: 2.5rem;
+  }
+  .hero__cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1rem 2rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    font-family: var(--sans);
+  }
+  .btn--primary {
+    background: var(--vert-bristol);
+    color: var(--ivoire-pale);
+  }
+  .btn--primary:hover {
+    background: var(--vert-fonce);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -8px rgba(91, 147, 150, 0.4);
+  }
+  .btn--ghost {
+    background: transparent;
+    color: var(--marine);
+    border: 1px solid var(--marine);
+  }
+  .btn--ghost:hover {
+    background: var(--marine);
+    color: var(--ivoire-pale);
+  }
+  .btn__arrow {
+    display: inline-block;
+    transition: transform 0.3s;
+  }
+  .btn:hover .btn__arrow { transform: translateX(4px); }
+
+  .hero__visual {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    background: linear-gradient(135deg, var(--sable) 0%, var(--ivoire-pale) 100%);
+    overflow: hidden;
+    opacity: 0; animation: rise 1.2s 0.5s forwards;
+    box-shadow: 0 30px 60px -20px rgba(26, 42, 68, 0.25);
+  }
+  .hero__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 8s ease;
+  }
+  .hero__visual:hover img { transform: scale(1.04); }
+  .hero__visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(14, 26, 46, 0.45) 100%);
+    pointer-events: none;
+  }
+  .hero__caption {
+    position: absolute;
+    bottom: 1.8rem; left: 1.8rem;
+    right: 1.8rem;
+    color: var(--ivoire-pale);
+    z-index: 2;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.4;
+    text-shadow: 0 2px 12px rgba(14, 26, 46, 0.6);
+  }
+  .hero__caption small {
+    display: block;
+    font-family: var(--sans);
+    font-style: normal;
+    font-size: 0.65rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    margin-top: 0.4rem;
+    opacity: 0.85;
+  }
+  .hero__badge {
+    position: absolute;
+    top: 1.5rem; left: 1.5rem;
+    background: rgba(246, 241, 232, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--vert-bristol);
+    color: var(--vert-bristol);
+    padding: 0.45rem 0.95rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    font-weight: 500;
+    z-index: 2;
+  }
+
+  .hero__locations {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--ligne);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 1.8rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--texte-doux);
+    opacity: 0; animation: rise 1.2s 1s forwards;
+  }
+  .hero__locations-label {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.95rem;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--vert-bristol);
+    margin-right: 0.5rem;
+  }
+  .hero__locations span:not(.hero__locations-label) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    white-space: nowrap;
+  }
+  .hero__locations span:not(.hero__locations-label)::before {
+    content: "";
+    width: 5px; height: 5px;
+    background: var(--vert-bristol);
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  /* ============== SECTIONS COMMUNES ============== */
+  section {
+    padding: 7rem var(--gut);
+    position: relative;
+  }
+  .section__inner { max-width: var(--max); margin: 0 auto; }
+
+  .section__head {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    margin-bottom: 4.5rem;
+    align-items: end;
+  }
+  .section__head h2 {
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+    font-weight: 400;
+  }
+  .section__head h2 em {
+    font-style: italic;
+    color: var(--vert-bristol);
+  }
+  .section__head p {
+    font-size: 1.05rem;
+    color: var(--texte-doux);
+    max-width: 38em;
+  }
+
+  /* ============== BANDEAU PLEINE LARGEUR ============== */
+  .banner {
+    width: 100%;
+    height: clamp(280px, 38vw, 520px);
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+    padding: 0;
+  }
+  .banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 12s ease-out;
+  }
+  .banner:hover img { transform: scale(1.04); }
+  .banner__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(14, 26, 46, 0.05) 0%, rgba(14, 26, 46, 0.25) 100%);
+    pointer-events: none;
+  }
+  .banner__caption {
+    position: absolute;
+    bottom: 2rem;
+    left: var(--gut);
+    right: var(--gut);
+    color: var(--ivoire-pale);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.1rem, 2vw, 1.6rem);
+    line-height: 1.4;
+    text-shadow: 0 2px 16px rgba(14, 26, 46, 0.7);
+    max-width: var(--max);
+    margin: 0 auto;
+    z-index: 2;
+  }
+  .banner__caption::before {
+    content: "";
+    display: block;
+    width: 36px;
+    height: 1px;
+    background: var(--ivoire-pale);
+    margin-bottom: 0.8rem;
+    opacity: 0.7;
+  }
+
+  /* ============== HISTOIRE ============== */
+  .histoire {
+    background: var(--ivoire-pale);
+    border-top: 1px solid var(--ligne);
+    border-bottom: 1px solid var(--ligne);
+  }
+  .histoire__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--ligne);
+    margin-top: 3rem;
+  }
+  .gen {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid var(--ligne);
+    position: relative;
+  }
+  .gen:last-child { border-right: none; }
+  .gen__num {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    color: var(--vert-bristol);
+    font-style: italic;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+  .gen__years {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--marine);
+    margin-bottom: 0.4rem;
+  }
+  .gen__name {
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--vert-bristol);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  .gen__desc {
+    font-size: 0.95rem;
+    color: var(--texte-doux);
+    line-height: 1.7;
+  }
+
+  /* ============== SERVICES ============== */
+  .services { background: var(--ivoire); }
+  .services__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--ligne);
+    border: 1px solid var(--ligne);
+  }
+  .service {
+    background: var(--ivoire);
+    padding: 3rem 2.5rem;
+    transition: background 0.4s;
+    cursor: default;
+  }
+  .service:hover { background: var(--ivoire-pale); }
+  .service__icon {
+    width: 48px; height: 48px;
+    margin-bottom: 1.8rem;
+    color: var(--vert-bristol);
+  }
+  .service__icon svg { width: 100%; height: 100%; }
+  .service h3 {
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+  }
+  .service p {
+    font-size: 0.95rem;
+    color: var(--texte-doux);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+  .service__list {
+    list-style: none;
+    border-top: 1px solid var(--ligne);
+    padding-top: 1.2rem;
+  }
+  .service__list li {
+    font-size: 0.85rem;
+    color: var(--texte);
+    padding: 0.4rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+  }
+  .service__list li::before {
+    content: "—";
+    position: absolute; left: 0;
+    color: var(--vert-bristol);
+  }
+
+  /* ============== CHARTER FLEET ============== */
+  .charter {
+    background: linear-gradient(180deg, var(--ivoire-pale) 0%, var(--sable) 100%);
+  }
+  .fleet {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .yacht {
+    background: var(--ivoire);
+    border: 1px solid var(--ligne);
+    overflow: hidden;
+    transition: all 0.5s ease;
+    display: flex; flex-direction: column;
+  }
+  .yacht:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 60px -20px rgba(26, 42, 68, 0.18);
+  }
+  .yacht__img {
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(135deg, var(--sable-fonce), var(--marine));
+    position: relative;
+    overflow: hidden;
+  }
+  .yacht__img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+  }
+  .yacht:hover .yacht__img img { transform: scale(1.06); }
+  .yacht__placeholder {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ivoire-pale);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    background: linear-gradient(135deg, var(--marine) 0%, var(--vert-fonce) 100%);
+  }
+  .yacht__placeholder::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: url('logo-light.png') center/40% no-repeat;
+    opacity: 0.22;
+  }
+  .yacht__tag {
+    position: absolute;
+    top: 1rem; left: 1rem;
+    background: var(--ivoire-pale);
+    color: var(--vert-bristol);
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.8rem;
+    font-weight: 500;
+  }
+  .yacht__body { padding: 1.8rem; flex: 1; display: flex; flex-direction: column; }
+  .yacht__name {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    color: var(--marine);
+    margin-bottom: 0.3rem;
+  }
+  .yacht__sub {
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--vert-bristol);
+    margin-bottom: 1.2rem;
+  }
+  .yacht__specs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--ligne);
+    border-bottom: 1px solid var(--ligne);
+    margin-bottom: 1.2rem;
+  }
+  .yacht__spec { font-size: 0.78rem; }
+  .yacht__spec-label {
+    color: var(--texte-doux);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+  }
+  .yacht__spec-value {
+    color: var(--marine);
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+  .yacht__price {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--vert-bristol);
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+  .yacht__price span {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--texte-doux);
+    font-style: normal;
+  }
+  .yacht__cta {
+    display: block;
+    text-align: center;
+    padding: 0.85rem;
+    background: transparent;
+    color: var(--vert-bristol);
+    border: 1px solid var(--vert-bristol);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.3s;
+    margin-top: auto;
+  }
+  .yacht__cta:hover {
+    background: var(--vert-bristol);
+    color: var(--ivoire-pale);
+  }
+
+  /* ============== EXPERTISE / VENTE ============== */
+  .expertise {
+    background: var(--marine);
+    color: var(--ivoire);
+    position: relative;
+    overflow: hidden;
+  }
+  .expertise::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 80% 20%, rgba(91, 147, 150, 0.15), transparent 50%);
+    pointer-events: none;
+  }
+  .expertise h2, .expertise h3 { color: var(--ivoire); }
+  .expertise .eyebrow { color: var(--or-pale); }
+  .expertise .eyebrow::before { background: var(--or-pale); }
+  .expertise__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .expertise p {
+    color: rgba(246, 241, 232, 0.78);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+  }
+  .expertise blockquote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.55rem;
+    line-height: 1.5;
+    color: var(--ivoire);
+    border-left: 2px solid var(--or-pale);
+    padding-left: 2rem;
+    margin: 2.5rem 0;
+  }
+  .expertise blockquote cite {
+    display: block;
+    margin-top: 1rem;
+    font-style: normal;
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--or-pale);
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  .stat {
+    border-left: 1px solid rgba(246, 241, 232, 0.15);
+    padding-left: 1.5rem;
+  }
+  .stat__num {
+    font-family: var(--serif);
+    font-size: 4rem;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--or-pale);
+    margin-bottom: 0.4rem;
+  }
+  .stat__label {
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(246, 241, 232, 0.7);
+  }
+
+  /* ============== RESERVATION FORM ============== */
+  .reserver {
+    background: var(--ivoire);
+    border-top: 1px solid var(--ligne);
+  }
+
+  .form-shell {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 0;
+    border: 1px solid var(--ligne);
+    background: var(--ivoire);
+    overflow: hidden;
+  }
+
+  .form-aside {
+    background: linear-gradient(160deg, var(--vert-fonce) 0%, var(--vert-bristol) 100%);
+    color: var(--ivoire);
+    padding: 3.5rem 2.8rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .form-aside::after {
+    content: "";
+    position: absolute;
+    bottom: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: url('logo-light.png') center/contain no-repeat;
+    opacity: 0.12;
+  }
+  .form-aside h3 {
+    color: var(--ivoire);
+    font-size: 1.9rem;
+    margin-bottom: 1.2rem;
+    position: relative; z-index: 2;
+  }
+  .form-aside p {
+    color: rgba(246, 241, 232, 0.85);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    position: relative; z-index: 2;
+  }
+  .form-aside__contact {
+    border-top: 1px solid rgba(246, 241, 232, 0.2);
+    padding-top: 2rem;
+    position: relative; z-index: 2;
+  }
+  .form-aside__contact div { margin-bottom: 1rem; }
+  .form-aside__contact strong {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--or-pale);
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+  }
+  .form-aside__contact a {
+    color: var(--ivoire);
+    text-decoration: none;
+    font-size: 0.95rem;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+  }
+  .form-aside__contact a:hover { border-bottom-color: var(--or-pale); }
+
+  .form-main { padding: 3rem 2.8rem; }
+
+  .form-step {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--vert-bristol);
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+  }
+  .form-main h3 {
+    font-size: 1.9rem;
+    margin-bottom: 2rem;
+    color: var(--marine);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+  .form-row--full { grid-template-columns: 1fr; }
+  .form-row--3 { grid-template-columns: repeat(3, 1fr); }
+
+  .field { display: flex; flex-direction: column; }
+  .field label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--texte-doux);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .field label .req { color: var(--vert-bristol); }
+  .field input,
+  .field select,
+  .field textarea {
+    background: var(--ivoire-pale);
+    border: 1px solid var(--ligne);
+    padding: 0.85rem 1rem;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--marine);
+    transition: all 0.3s;
+    border-radius: 0;
+    width: 100%;
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--vert-bristol);
+    background: var(--ivoire);
+    box-shadow: 0 0 0 3px rgba(91, 147, 150, 0.08);
+  }
+  .field textarea { min-height: 120px; resize: vertical; font-family: var(--sans); }
+  .field select { cursor: pointer; }
+
+  .form-fieldset {
+    border: none;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--ligne);
+    margin-top: 1.5rem;
+  }
+  .form-fieldset legend {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--vert-bristol);
+    font-size: 1rem;
+    padding-right: 1rem;
+  }
+
+  .checkbox-group { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.8rem; }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.55rem 1rem;
+    border: 1px solid var(--ligne);
+    background: var(--ivoire-pale);
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    user-select: none;
+  }
+  .chip input { display: none; }
+  .chip:hover { border-color: var(--vert-bristol); }
+  .chip:has(input:checked) {
+    background: var(--vert-bristol);
+    color: var(--ivoire-pale);
+    border-color: var(--vert-bristol);
+  }
+
+  .consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    margin: 1.5rem 0;
+    font-size: 0.85rem;
+    color: var(--texte-doux);
+    line-height: 1.6;
+  }
+  .consent input[type="checkbox"] {
+    width: 18px; height: 18px;
+    accent-color: var(--vert-bristol);
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+
+  .form-submit {
+    width: 100%;
+    background: var(--vert-bristol);
+    color: var(--ivoire-pale);
+    border: none;
+    padding: 1.2rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: var(--sans);
+  }
+  .form-submit:hover {
+    background: var(--vert-fonce);
+    letter-spacing: 0.32em;
+  }
+  .form-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .form-feedback {
+    margin-top: 1.5rem;
+    padding: 1.2rem;
+    text-align: center;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    display: none;
+  }
+  .form-feedback.show { display: block; }
+  .form-feedback.ok { background: rgba(91, 147, 150, 0.08); color: var(--vert-fonce); border-left: 3px solid var(--vert-bristol); }
+  .form-feedback.err { background: rgba(220, 80, 80, 0.08); color: #8a2a2a; border-left: 3px solid #8a2a2a; }
+
+  /* ============== CONTACT GENERAL ============== */
+  .contact { background: var(--ivoire-pale); border-top: 1px solid var(--ligne); }
+  .contact__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .contact-card {
+    padding: 2.5rem;
+    border: 1px solid var(--ligne);
+    background: var(--ivoire);
+    transition: all 0.4s;
+  }
+  .contact-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -16px rgba(26, 42, 68, 0.12);
+    border-color: var(--vert-bristol);
+  }
+  .contact-card__title {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    color: var(--marine);
+    margin-bottom: 0.4rem;
+  }
+  .contact-card__country {
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--vert-bristol);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+  .contact-card p, .contact-card a {
+    font-size: 0.95rem;
+    color: var(--texte);
+    text-decoration: none;
+    line-height: 1.7;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+  .contact-card a:hover { color: var(--vert-bristol); }
+
+  /* ============== FOOTER ============== */
+  footer {
+    background: var(--marine-fonce);
+    color: rgba(246, 241, 232, 0.7);
+    padding: 4rem var(--gut) 2rem;
+  }
+  .foot {
+    max-width: var(--max);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+  .foot__brand img {
+    height: 100px; width: auto;
+    margin-bottom: 1.4rem;
+    background: var(--ivoire);
+    padding: 14px 20px;
+    border-radius: 3px;
+    display: block;
+    box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.4);
+  }
+  .foot__brand p {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: rgba(246, 241, 232, 0.85);
+    line-height: 1.6;
+  }
+  .foot h4 {
+    color: var(--ivoire);
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+  .foot ul { list-style: none; }
+  .foot li { margin-bottom: 0.6rem; }
+  .foot a {
+    color: rgba(246, 241, 232, 0.7);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+  }
+  .foot a:hover { color: var(--or-pale); }
+
+  .foot__bottom {
+    max-width: var(--max);
+    margin: 0 auto;
+    border-top: 1px solid rgba(246, 241, 232, 0.1);
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.78rem;
+    color: rgba(246, 241, 232, 0.5);
+  }
+
+  /* ============== REVEAL SCROLL ============== */
+  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.9s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ============== RESPONSIVE ============== */
+  /* ============================================================
+     RESPONSIVE — Mobile first refinement
+     Breakpoints : 980 (tablette), 720 (large mobile), 480 (mobile)
+     ============================================================ */
+
+  /* ---------- TABLETTE (≤ 980px) ---------- */
+  @media (max-width: 980px) {
+    :root {
+      --gut: clamp(1.25rem, 4vw, 2.5rem);
+    }
+
+    .hero__inner,
+    .section__head,
+    .expertise__grid,
+    .form-shell,
+    .histoire__grid,
+    .services__grid,
+    .contact__grid,
+    .foot { grid-template-columns: 1fr; }
+
+    .hero { min-height: auto; padding: 7rem var(--gut) 3rem; }
+    .hero__inner { gap: 2.5rem; }
+    .hero__visual {
+      aspect-ratio: 4 / 5;
+      max-width: 480px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .hero__locations {
+      gap: 0.4rem 1.4rem;
+      margin-top: 2.5rem;
+    }
+
+    section { padding: 5rem var(--gut); }
+    .section__head { gap: 1rem; margin-bottom: 3rem; }
+
+    .gen { border-right: none; border-bottom: 1px solid var(--ligne); }
+    .gen:last-child { border-bottom: none; }
+
+    .form-aside { padding: 2.5rem; }
+    .form-main { padding: 2.5rem; }
+
+    .stats { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+
+    .banner { height: clamp(220px, 50vw, 400px); }
+    .banner__caption { bottom: 1.5rem; font-size: 1.1rem; }
+
+    .nav__links { display: none; }
+    .nav__links.open {
+      display: flex;
+      position: fixed;
+      inset: 0;
+      background: var(--ivoire);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1.8rem;
+      padding: 5rem 2rem 3rem;
+      z-index: 150;
+      overflow-y: auto;
+    }
+    .nav__links.open a {
+      font-size: 1.05rem;
+      letter-spacing: 0.22em;
+      padding: 0.5rem 0;
+    }
+    .nav__links.open .nav__cta {
+      margin-top: 1rem;
+      padding: 1rem 2rem;
+      font-size: 0.85rem;
+    }
+    .nav__burger { display: block; z-index: 200; }
+    .nav__burger.active span:nth-child(1) { top: 11px; transform: rotate(45deg); }
+    .nav__burger.active span:nth-child(2) { opacity: 0; }
+    .nav__burger.active span:nth-child(3) { top: 11px; transform: rotate(-45deg); }
+  }
+
+  /* ---------- MOBILE LARGE (≤ 720px) ---------- */
+  @media (max-width: 720px) {
+    :root {
+      --gut: 1.25rem;
+    }
+
+    /* Typographies fluides resserrées sur mobile */
+    h1, h2, h3, h4 { letter-spacing: 0; }
+
+    .nav { padding: 0.9rem var(--gut); }
+    .nav.scrolled { padding: 0.7rem var(--gut); }
+    .nav__brand img { height: 44px; }
+    .nav.scrolled .nav__brand img { height: 38px; }
+
+    /* HERO mobile */
+    .hero {
+      padding: 6rem var(--gut) 2.5rem;
+      min-height: auto;
+    }
+    .hero__inner { gap: 2rem; }
+    .hero h1 {
+      font-size: clamp(2.4rem, 9vw, 3.4rem);
+      margin: 1rem 0 1.2rem;
+      line-height: 1.05;
+    }
+    .hero p.lede {
+      font-size: 1.05rem;
+      line-height: 1.55;
+      margin-bottom: 1.8rem;
+    }
+    .hero__cta {
+      flex-direction: column;
+      gap: 0.7rem;
+      align-items: stretch;
+    }
+    .btn {
+      width: 100%;
+      justify-content: center;
+      padding: 1.1rem 1.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+    }
+    .hero__visual {
+      aspect-ratio: 4 / 5;
+      max-width: 100%;
+    }
+    .hero__caption {
+      bottom: 1.2rem; left: 1.2rem; right: 1.2rem;
+      font-size: 0.92rem;
+    }
+    .hero__caption small { font-size: 0.6rem; }
+    .hero__badge {
+      top: 1rem; left: 1rem;
+      font-size: 0.6rem;
+      padding: 0.35rem 0.75rem;
+    }
+    .hero__locations {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.7rem;
+      margin-top: 2.2rem;
+      padding-top: 1.6rem;
+      font-size: 0.66rem;
+      letter-spacing: 0.24em;
+    }
+    .hero__locations-label {
+      font-size: 0.88rem;
+      margin-bottom: 0.2rem;
+    }
+
+    /* Sections */
+    section { padding: 4rem var(--gut); }
+    .eyebrow { font-size: 0.65rem; letter-spacing: 0.28em; }
+    .eyebrow::before { width: 20px; margin-right: 10px; }
+    .section__head h2 {
+      font-size: clamp(2rem, 7vw, 2.8rem);
+      line-height: 1.1;
+    }
+    .section__head p { font-size: 0.98rem; }
+
+    /* HISTOIRE */
+    .gen { padding: 2rem 1.25rem; }
+    .gen__years { font-size: 1.7rem; }
+    .gen__name { font-size: 0.78rem; }
+
+    /* SERVICES */
+    .service { padding: 2.2rem 1.5rem; }
+    .service h3 { font-size: 1.5rem; }
+    .service__icon { width: 40px; height: 40px; margin-bottom: 1.4rem; }
+
+    /* CHARTER fleet */
+    .fleet { gap: 1.5rem; grid-template-columns: 1fr; }
+    .yacht__body { padding: 1.4rem; }
+    .yacht__name { font-size: 1.4rem; }
+    .yacht__specs { gap: 0.5rem; padding: 0.8rem 0; }
+    .yacht__spec-value { font-size: 0.85rem; }
+    .yacht__spec-label { font-size: 0.58rem; }
+
+    /* BANDEAUX */
+    .banner { height: 240px; }
+    .banner__caption {
+      bottom: 1.2rem;
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+    .banner__caption::before { width: 24px; margin-bottom: 0.6rem; }
+
+    /* EXPERTISE */
+    .expertise blockquote {
+      font-size: 1.2rem;
+      padding-left: 1.2rem;
+      margin: 2rem 0;
+    }
+    .stats { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+    .stat { padding-left: 1rem; }
+    .stat__num { font-size: 2.8rem; }
+    .stat__label { font-size: 0.65rem; letter-spacing: 0.2em; }
+
+    /* RESERVATION FORM — points clés mobile */
+    .form-shell { border: none; }
+    .form-aside {
+      padding: 2rem 1.25rem;
+      text-align: left;
+    }
+    .form-aside h3 { font-size: 1.5rem; margin-bottom: 0.8rem; }
+    .form-aside > p:nth-of-type(2) { display: none; } /* masquer 2e paragraphe sur mobile */
+    .form-aside p { font-size: 0.95rem; margin-bottom: 1.5rem; }
+    .form-aside__contact { padding-top: 1.5rem; }
+    .form-aside__contact div { margin-bottom: 0.8rem; }
+    .form-main { padding: 2rem 1.25rem; }
+    .form-main h3 { font-size: 1.5rem; margin-bottom: 1.5rem; }
+
+    .form-row,
+    .form-row--3 { grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1rem; }
+
+    .field input,
+    .field select,
+    .field textarea {
+      font-size: 16px; /* Empêche le zoom auto sur iOS */
+      padding: 0.95rem 0.9rem;
+    }
+    .field label {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      margin-bottom: 0.4rem;
+    }
+
+    .checkbox-group { gap: 0.5rem; }
+    .chip {
+      padding: 0.55rem 0.9rem;
+      font-size: 0.78rem;
+    }
+
+    .consent {
+      font-size: 0.82rem;
+      gap: 0.6rem;
+    }
+    .consent input[type="checkbox"] {
+      width: 22px; height: 22px;
+    }
+
+    .form-submit {
+      padding: 1.1rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+    }
+
+    /* CONTACT */
+    .contact-card { padding: 2rem 1.5rem; }
+    .contact-card__title { font-size: 1.3rem; }
+
+    /* FOOTER */
+    footer { padding: 3rem var(--gut) 1.5rem; }
+    .foot { gap: 2.2rem; margin-bottom: 2.2rem; }
+    .foot__brand img {
+      height: 75px;
+      padding: 10px 14px;
+    }
+    .foot__brand p { font-size: 0.95rem; }
+    .foot h4 { margin-bottom: 1rem; }
+    .foot__bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.72rem;
+      padding-top: 1.5rem;
+    }
+
+    /* Hover désactivé sur tactile (qui restait collé après tap) */
+    .yacht:hover { transform: none; box-shadow: none; }
+    .yacht:hover .yacht__img img { transform: none; }
+    .banner:hover img { transform: none; }
+    .hero__visual:hover img { transform: none; }
+    .contact-card:hover { transform: none; box-shadow: none; }
+  }
+
+  /* ---------- MOBILE PETIT (≤ 480px) ---------- */
+  @media (max-width: 480px) {
+    .hero h1 { font-size: clamp(2.1rem, 10vw, 2.8rem); }
+    .hero__visual { aspect-ratio: 3 / 4; }
+    .gen { padding: 1.6rem 1rem; }
+    .stats { grid-template-columns: 1fr; }
+    .stat__num { font-size: 2.5rem; }
+    .yacht__specs { grid-template-columns: 1fr 1fr 1fr; font-size: 0.75rem; }
+
+    /* Encore plus serré sur petits iPhones */
+    .form-aside, .form-main { padding: 1.5rem 1rem; }
+    .service { padding: 1.8rem 1.2rem; }
+    .contact-card { padding: 1.6rem 1.2rem; }
+  }
+
+  /* ---------- iPhone safe-area (notch & barre du bas) ---------- */
+  @supports (padding: max(0px)) {
+    .nav {
+      padding-left: max(var(--gut), env(safe-area-inset-left));
+      padding-right: max(var(--gut), env(safe-area-inset-right));
+    }
+    footer {
+      padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+    }
+  }
+
+  /* ---------- Animations réduites pour utilisateurs sensibles ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    .reveal { opacity: 1 !important; transform: none !important; }
+  }
+</style>
+
+</head>
+<body>
+
+<!-- ============== NAV ============== -->
+
+<nav class="nav" id="nav">
+  <a href="#top" class="nav__brand">
+    <img src="logo.jpeg" alt="Bristol Marine" />
+    <span class="nav__brand-text">
+      Bristol Marine
+      <small>Since 1959</small>
+    </span>
+  </a>
+  <div class="nav__links" id="navLinks">
+    <a href="#histoire">Maison</a>
+    <a href="#services">Métiers</a>
+    <a href="#charter">Charter</a>
+    <a href="#expertise">Vente</a>
+    <a href="#contact">Contact</a>
+    <a href="#reserver" class="nav__cta">Réserver</a>
+  </div>
+  <button class="nav__burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ============== HERO ============== -->
+
+<header class="hero" id="top">
+  <div class="hero__inner">
+    <div class="hero__content">
+      <span class="eyebrow">Maison nautique &nbsp;·&nbsp; Depuis 1959</span>
+      <h1>L'art de la mer, <em>en héritage</em>.</h1>
+      <p class="lede">
+        Trois générations au service du yachting de tradition. De la Riviera française aux émirats, jusqu'aux côtes d'Asie : courtage, charter et gestion d'unités de prestige.
+      </p>
+      <div class="hero__cta">
+        <a href="#charter" class="btn btn--primary">
+          Découvrir la flotte
+          <span class="btn__arrow">→</span>
+        </a>
+        <a href="#reserver" class="btn btn--ghost">
+          Réserver un charter
+        </a>
+      </div>
+      <div class="hero__locations">
+        <span class="hero__locations-label">Présents à</span>
+        <span>Beaulieu-sur-Mer</span>
+        <span>Dubai Marina</span>
+        <span>Phuket · Thaïlande</span>
+      </div>
+    </div>
+    <div class="hero__visual">
+      <span class="hero__badge">Est. 1959</span>
+      <img src="hero.jpg" alt="Bristol Marine — Port des Fourmis, Beaulieu-sur-Mer" loading="eager" />
+      <div class="hero__caption">
+        Le cabanon historique
+        <small>Port des Fourmis · Beaulieu-sur-Mer</small>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============== HISTOIRE ============== -->
+
+<section class="histoire" id="histoire">
+  <div class="section__inner">
+    <div class="section__head reveal">
+      <div>
+        <span class="eyebrow">La Maison</span>
+      </div>
+      <div>
+        <h2>Une lignée de <em>passionnés de la mer</em>, une signature.</h2>
+        <p style="margin-top: 1.5rem;">
+          Bristol Marine est née sur les pontons du Port des Fourmis, à Beaulieu-sur-Mer, en 1959. Trois générations s'y sont succédé, transmettant la même exigence : connaître chaque coque, chaque équipage, chaque baie de la Méditerranée.
+        </p>
+      </div>
+    </div>
+
+```
+<div class="histoire__grid reveal">
+  <div class="gen">
+    <div class="gen__num">— Première génération</div>
+    <div class="gen__years">1959</div>
+    <div class="gen__name">Jacky</div>
+    <p class="gen__desc">Le fondateur. Une passion de la mer et un atelier au bord du quai. Tout commence à la voile, à l'ancienne, à la main.</p>
+  </div>
+  <div class="gen">
+    <div class="gen__num">— Deuxième génération</div>
+    <div class="gen__years">1985</div>
+    <div class="gen__name">Bernard &amp; Sylvie</div>
+    <p class="gen__desc">L'ouverture vers le yachting moderne. La maison se structure, se professionnalise, s'ouvre à l'international et au charter de prestige.</p>
+  </div>
+  <div class="gen">
+    <div class="gen__num">— Troisième génération</div>
+    <div class="gen__years">2025</div>
+    <div class="gen__name">Vanessa &amp; Laura</div>
+    <p class="gen__desc">L'expansion globale. France, UAE, Asie. Une nouvelle génération qui conjugue tradition familiale et présence sur les marchés émergents.</p>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ============== BANDEAU 1 ============== -->
+
+<div class="banner reveal">
+  <img src="banner-1.jpg" alt="Détail nautique — l'art de l'amarrage" loading="lazy" />
+  <div class="banner__overlay"></div>
+  <div class="banner__caption">
+    « Connaître chaque coque, chaque cordage, chaque silence du port. »
+  </div>
+</div>
+
+<!-- ============== SERVICES ============== -->
+
+<section class="services" id="services">
+  <div class="section__inner">
+    <div class="section__head reveal">
+      <div><span class="eyebrow">Nos métiers</span></div>
+      <div>
+        <h2>Trois savoir-faire, <em>une seule maison</em>.</h2>
+        <p style="margin-top: 1.5rem;">
+          Une approche globale du yachting, de la première visite jusqu'à la mise à disposition. Notre équipe vous accompagne sur l'ensemble du cycle de vie de votre yacht.
+        </p>
+      </div>
+    </div>
+
+```
+<div class="services__grid reveal">
+  <article class="service">
+    <div class="service__icon">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4">
+        <path d="M32 6 L52 50 L12 50 Z" />
+        <line x1="32" y1="6" x2="32" y2="50" />
+        <path d="M16 56 Q32 60 48 56" />
+      </svg>
+    </div>
+    <h3>Courtage &amp; Vente</h3>
+    <p>Achat, vente et négociation d'unités de prestige, de la day-cruiser au yacht semi-déplaçant. Expertise technique indépendante et accompagnement juridique.</p>
+    <ul class="service__list">
+      <li>Estimation et expertise</li>
+      <li>Mise en marché internationale</li>
+      <li>Suivi administratif et fiscal</li>
+      <li>Pavillons français et internationaux</li>
+    </ul>
+  </article>
+
+  <article class="service">
+    <div class="service__icon">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4">
+        <path d="M8 38 Q32 30 56 38 L52 50 L12 50 Z" />
+        <line x1="32" y1="14" x2="32" y2="38" />
+        <path d="M32 14 L44 30 L32 30 Z" />
+      </svg>
+    </div>
+    <h3>Charter Privé</h3>
+    <p>Locations à la journée, à la semaine ou à la saison sur la Côte d'Azur, en Italie, dans les Cyclades, à Dubaï et en Asie du Sud-Est. Skipper et équipage professionnel.</p>
+    <ul class="service__list">
+      <li>Day charter et croisières</li>
+      <li>Itinéraires sur mesure</li>
+      <li>Conciergerie embarquée</li>
+      <li>Événements privés et corporate</li>
+    </ul>
+  </article>
+
+  <article class="service">
+    <div class="service__icon">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4">
+        <circle cx="32" cy="32" r="22" />
+        <path d="M32 10 L32 54 M10 32 L54 32" />
+        <circle cx="32" cy="32" r="8" />
+      </svg>
+    </div>
+    <h3>Gestion &amp; Management</h3>
+    <p>Gestion locative et administration complète d'unités appartenant à des armateurs privés. Suivi équipages, maintenance, comptabilité, conformité réglementaire.</p>
+    <ul class="service__list">
+      <li>Mandat de gestion locative</li>
+      <li>Recrutement d'équipage</li>
+      <li>Maintenance technique programmée</li>
+      <li>Reporting financier mensuel</li>
+    </ul>
+  </article>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ============== CHARTER FLEET ============== -->
+
+<section class="charter" id="charter">
+  <div class="section__inner">
+    <div class="section__head reveal">
+      <div><span class="eyebrow">La Flotte</span></div>
+      <div>
+        <h2>Yachts de <em>caractère</em>, à la location.</h2>
+        <p style="margin-top: 1.5rem;">
+          Une sélection rigoureuse d'unités, choisies pour leur tenue de mer, leur élégance et le niveau de service de leur équipage.
+        </p>
+      </div>
+    </div>
+
+```
+<div class="fleet reveal" id="fleet"></div>
+```
+
+  </div>
+</section>
+
+<!-- ============== EXPERTISE / VENTE ============== -->
+
+<section class="expertise" id="expertise">
+  <div class="section__inner expertise__grid">
+    <div class="reveal">
+      <span class="eyebrow">Notre signature</span>
+      <h2 style="margin-top: 1.5rem;">Trois quarts de siècle <em>au service de la mer</em>.</h2>
+      <p style="margin-top: 2rem;">
+        Chez Bristol Marine, nous croyons que l'achat d'un yacht ne se résume pas à une transaction. C'est l'aboutissement d'un projet personnel, parfois familial, toujours intime.
+      </p>
+      <p>
+        C'est pourquoi nous avons choisi de rester une maison à taille humaine — connaître nos clients, comprendre leurs usages, et n'aligner que des unités dans lesquelles nous croyons.
+      </p>
+      <blockquote>
+        « La meilleure recommandation que l'on puisse faire à un armateur, c'est celle que l'on ferait à un membre de sa propre famille. »
+        <cite>— Bernard Bilardello, Directeur général</cite>
+      </blockquote>
+    </div>
+    <div class="stats reveal">
+      <div class="stat">
+        <div class="stat__num">66</div>
+        <div class="stat__label">années d'activité</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">3</div>
+        <div class="stat__label">générations</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">3</div>
+        <div class="stat__label">implantations mondiales</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">∞</div>
+        <div class="stat__label">milles parcourus</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== BANDEAU 2 ============== -->
+
+<div class="banner reveal">
+  <img src="banner-2.jpg" alt="Pavillon et pare-battage — l'élégance du yachting" loading="lazy" />
+  <div class="banner__overlay"></div>
+  <div class="banner__caption">
+    « L'élégance se reconnaît à l'attention portée à chaque détail. »
+  </div>
+</div>
+
+<!-- ============== RESERVATION ============== -->
+
+<section class="reserver" id="reserver">
+  <div class="section__inner">
+    <div class="section__head reveal">
+      <div><span class="eyebrow">Réservation</span></div>
+      <div>
+        <h2>Réservez votre <em>charter privé</em>.</h2>
+        <p style="margin-top: 1.5rem;">
+          Renseignez votre projet de location en quelques minutes. Notre équipe revient vers vous sous 24 heures avec une proposition personnalisée et un devis détaillé.
+        </p>
+      </div>
+    </div>
+
+```
+<div class="form-shell reveal">
+  <aside class="form-aside">
+    <h3>Une réservation, un dialogue.</h3>
+    <p>
+      Chaque charter Bristol Marine est composé sur mesure. Nous vous rappelons pour affiner votre itinéraire, sélectionner l'unité la plus adaptée et coordonner les services à bord.
+    </p>
+    <p>
+      Vos informations restent strictement confidentielles. Aucune réservation n'est confirmée sans votre accord écrit préalable.
+    </p>
+    <div class="form-aside__contact">
+      <div>
+        <strong>Téléphone</strong>
+        <a href="tel:+33612797247">+33 (0)6 12 79 72 47</a>
+      </div>
+      <div>
+        <strong>Courriel</strong>
+        <a href="mailto:contact@bristolmarine.fr">contact@bristolmarine.fr</a>
+      </div>
+      <div>
+        <strong>Bureau principal</strong>
+        <span style="color: rgba(246,241,232,0.85); font-size: 0.95rem;">Port des Fourmis<br/>06310 Beaulieu-sur-Mer</span>
+      </div>
+    </div>
+  </aside>
+
+  <div class="form-main">
+    <div class="form-step">— Formulaire de demande</div>
+    <h3>Vos informations</h3>
+
+    <form id="reservationForm" novalidate>
+      <!-- Identité -->
+      <div class="form-row">
+        <div class="field">
+          <label for="civilite">Civilité</label>
+          <select id="civilite" name="civilite">
+            <option value="">—</option>
+            <option>Monsieur</option>
+            <option>Madame</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="nationalite">Nationalité</label>
+          <input type="text" id="nationalite" name="nationalite" placeholder="Française" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="prenom">Prénom <span class="req">*</span></label>
+          <input type="text" id="prenom" name="prenom" required />
+        </div>
+        <div class="field">
+          <label for="nom">Nom <span class="req">*</span></label>
+          <input type="text" id="nom" name="nom" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="email">Courriel <span class="req">*</span></label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="field">
+          <label for="telephone">Téléphone <span class="req">*</span></label>
+          <input type="tel" id="telephone" name="telephone" required placeholder="+33 6 00 00 00 00" />
+        </div>
+      </div>
+
+      <!-- Charter -->
+      <fieldset class="form-fieldset">
+        <legend>Détails du charter</legend>
+      </fieldset>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="destination">Destination souhaitée <span class="req">*</span></label>
+          <select id="destination" name="destination" required>
+            <option value="">— Sélectionner —</option>
+            <option>Côte d'Azur (France)</option>
+            <option>Monaco / Riviera ligure</option>
+            <option>Corse</option>
+            <option>Sardaigne / Italie</option>
+            <option>Cyclades / Grèce</option>
+            <option>Baléares</option>
+            <option>Émirats Arabes Unis</option>
+            <option>Thaïlande / Asie du SE</option>
+            <option>Sur mesure</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="type">Type de location <span class="req">*</span></label>
+          <select id="type" name="type" required>
+            <option value="">— Sélectionner —</option>
+            <option>Demi-journée</option>
+            <option>Journée complète</option>
+            <option>Week-end</option>
+            <option>Semaine</option>
+            <option>Plus d'une semaine</option>
+            <option>Saisonnière</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="dateDepart">Date d'embarquement <span class="req">*</span></label>
+          <input type="date" id="dateDepart" name="dateDepart" required />
+        </div>
+        <div class="field">
+          <label for="dateRetour">Date de retour</label>
+          <input type="date" id="dateRetour" name="dateRetour" />
+        </div>
+      </div>
+
+      <div class="form-row form-row--3">
+        <div class="field">
+          <label for="adultes">Adultes <span class="req">*</span></label>
+          <input type="number" id="adultes" name="adultes" min="1" max="30" value="2" required />
+        </div>
+        <div class="field">
+          <label for="enfants">Enfants</label>
+          <input type="number" id="enfants" name="enfants" min="0" max="20" value="0" />
+        </div>
+        <div class="field">
+          <label for="budget">Budget indicatif</label>
+          <select id="budget" name="budget">
+            <option value="">—</option>
+            <option>&lt; 5 000 €</option>
+            <option>5 000 – 15 000 €</option>
+            <option>15 000 – 50 000 €</option>
+            <option>50 000 – 150 000 €</option>
+            <option>&gt; 150 000 €</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field" style="margin-bottom: 1.2rem;">
+        <label>Yacht souhaité (si déjà identifié)</label>
+        <select id="yacht" name="yacht">
+          <option value="">— Aucune préférence —</option>
+        </select>
+      </div>
+
+      <div class="field" style="margin-bottom: 1.2rem;">
+        <label>Services souhaités</label>
+        <div class="checkbox-group">
+          <label class="chip"><input type="checkbox" name="services" value="Skipper professionnel" /> Skipper professionnel</label>
+          <label class="chip"><input type="checkbox" name="services" value="Équipage complet" /> Équipage complet</label>
+          <label class="chip"><input type="checkbox" name="services" value="Chef à bord" /> Chef à bord</label>
+          <label class="chip"><input type="checkbox" name="services" value="Toy box (jet-ski, paddle)" /> Toy box</label>
+          <label class="chip"><input type="checkbox" name="services" value="Plongée" /> Plongée</label>
+          <label class="chip"><input type="checkbox" name="services" value="Transferts aéroport" /> Transferts</label>
+          <label class="chip"><input type="checkbox" name="services" value="Conciergerie" /> Conciergerie</label>
+        </div>
+      </div>
+
+      <div class="field" style="margin-bottom: 1.2rem;">
+        <label for="message">Précisions complémentaires</label>
+        <textarea id="message" name="message" placeholder="Itinéraire envisagé, occasion particulière (anniversaire, séminaire, mariage), exigences spécifiques…"></textarea>
+      </div>
+
+      <label class="consent">
+        <input type="checkbox" id="rgpd" required />
+        <span>
+          J'accepte que Bristol Marine recueille les informations renseignées dans ce formulaire pour traiter ma demande de réservation, conformément à sa politique de confidentialité. <span class="req">*</span>
+        </span>
+      </label>
+
+      <button type="submit" class="form-submit" id="submitBtn">
+        Envoyer ma demande →
+      </button>
+
+      <div class="form-feedback" id="feedback"></div>
+    </form>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ============== CONTACT ============== -->
+
+<section class="contact" id="contact">
+  <div class="section__inner">
+    <div class="section__head reveal">
+      <div><span class="eyebrow">Nos bureaux</span></div>
+      <div>
+        <h2>Une présence <em>à trois continents</em>.</h2>
+        <p style="margin-top: 1.5rem;">
+          Nos équipes vous accueillent de la Riviera française aux émirats du Golfe et jusqu'aux côtes d'Asie du Sud-Est.
+        </p>
+      </div>
+    </div>
+
+```
+<div class="contact__grid reveal">
+  <div class="contact-card">
+    <div class="contact-card__title">Beaulieu-sur-Mer</div>
+    <div class="contact-card__country">France · Siège</div>
+    <p>Port des Fourmis<br/>06310 Beaulieu-sur-Mer</p>
+    <a href="tel:+33612797247">+33 (0)6 12 79 72 47</a>
+    <a href="mailto:contact@bristolmarine.fr">contact@bristolmarine.fr</a>
+  </div>
+  <div class="contact-card">
+    <div class="contact-card__title">Dubaï</div>
+    <div class="contact-card__country">Émirats Arabes Unis</div>
+    <p>Dubai Marina<br/>Émirats Arabes Unis</p>
+    <a href="#reserver">Demander un rendez-vous →</a>
+  </div>
+  <div class="contact-card">
+    <div class="contact-card__title">Phuket</div>
+    <div class="contact-card__country">Thaïlande</div>
+    <p>Phuket<br/>Thaïlande</p>
+    <a href="#reserver">Demander un rendez-vous →</a>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+
+<footer>
+  <div class="foot">
+    <div class="foot__brand">
+      <img src="logo.jpeg" alt="Bristol Marine" />
+      <p>« L'art de la mer, en héritage. »<br/>Maison nautique fondée en 1959.</p>
+    </div>
+    <div>
+      <h4>Maison</h4>
+      <ul>
+        <li><a href="#histoire">Notre histoire</a></li>
+        <li><a href="#services">Nos métiers</a></li>
+        <li><a href="#expertise">Vente</a></li>
+        <li><a href="#charter">Charter</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Bureaux</h4>
+      <ul>
+        <li><a href="#contact">Beaulieu-sur-Mer</a></li>
+        <li><a href="#contact">Dubaï</a></li>
+        <li><a href="#contact">Phuket</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Légal</h4>
+      <ul>
+        <li><a href="#">Mentions légales</a></li>
+        <li><a href="#">CGV / CGU</a></li>
+        <li><a href="#">Politique de confidentialité</a></li>
+        <li><a href="#">Cookies</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot__bottom">
+    <span>© 1959–2025 Bristol Marine Green. Tous droits réservés.</span>
+    <span>France · UAE · Asia</span>
+  </div>
+</footer>
+
+<!-- ============== JS ============== -->
+
+<script>
+  // ============================================================
+  // FLOTTE — Modifiez simplement ce tableau pour ajouter/retirer
+  // un yacht. Pour l'image : remplacez `image: null` par
+  // `image: 'photos/mon-yacht.jpg'` une fois le fichier déposé.
+  // ============================================================
+  const FLEET = [
+    {
+      name: "Riva Aquariva",
+      sub: "Day Cruiser · Riva Heritage",
+      tag: "Disponible",
+      length: "10 m",
+      capacity: "8 pers.",
+      cabins: "—",
+      price: "À partir de 3 200 € / jour",
+      image: null
+    },
+    {
+      name: "Sanlorenzo SX 88",
+      sub: "Crossover · Sanlorenzo",
+      tag: "Coup de cœur",
+      length: "27 m",
+      capacity: "12 pers.",
+      cabins: "4 cabines",
+      price: "Sur demande",
+      image: null
+    },
+    {
+      name: "Sunseeker Predator 60",
+      sub: "Sport Yacht",
+      tag: "Disponible",
+      length: "18 m",
+      capacity: "10 pers.",
+      cabins: "3 cabines",
+      price: "À partir de 8 500 € / jour",
+      image: null
+    },
+    {
+      name: "Princess F55",
+      sub: "Flybridge",
+      tag: "Disponible",
+      length: "17 m",
+      capacity: "10 pers.",
+      cabins: "3 cabines",
+      price: "À partir de 7 200 € / jour",
+      image: null
+    },
+    {
+      name: "Azimut Grande 30M",
+      sub: "Yacht semi-déplaçant",
+      tag: "Sur demande",
+      length: "30 m",
+      capacity: "12 pers.",
+      cabins: "5 cabines",
+      price: "Sur demande",
+      image: null
+    },
+    {
+      name: "Frauscher 1414 Demon",
+      sub: "Day Boat haute couture",
+      tag: "Disponible",
+      length: "14 m",
+      capacity: "9 pers.",
+      cabins: "—",
+      price: "À partir de 4 500 € / jour",
+      image: null
+    }
+  ];
+
+  // Rendu de la flotte
+  const fleetEl = document.getElementById('fleet');
+  const yachtSelect = document.getElementById('yacht');
+
+  FLEET.forEach((y, i) => {
+    const card = document.createElement('article');
+    card.className = 'yacht';
+    card.innerHTML = `
+      <div class="yacht__img">
+        <span class="yacht__tag">${y.tag}</span>
+        ${y.image
+          ? `<img src="${y.image}" alt="${y.name}" loading="lazy" />`
+          : `<div class="yacht__placeholder">Visuel à venir</div>`
+        }
+      </div>
+      <div class="yacht__body">
+        <div class="yacht__name">${y.name}</div>
+        <div class="yacht__sub">${y.sub}</div>
+        <div class="yacht__specs">
+          <div class="yacht__spec">
+            <div class="yacht__spec-label">Longueur</div>
+            <div class="yacht__spec-value">${y.length}</div>
+          </div>
+          <div class="yacht__spec">
+            <div class="yacht__spec-label">Capacité</div>
+            <div class="yacht__spec-value">${y.capacity}</div>
+          </div>
+          <div class="yacht__spec">
+            <div class="yacht__spec-label">Cabines</div>
+            <div class="yacht__spec-value">${y.cabins}</div>
+          </div>
+        </div>
+        <div class="yacht__price">${y.price}</div>
+        <a href="#reserver" class="yacht__cta" data-yacht="${y.name}">Demander ce yacht</a>
+      </div>
+    `;
+    fleetEl.appendChild(card);
+
+    const opt = document.createElement('option');
+    opt.value = y.name;
+    opt.textContent = y.name + ' — ' + y.sub;
+    yachtSelect.appendChild(opt);
+  });
+
+  // Pré-remplissage du select yacht depuis "Demander ce yacht"
+  document.querySelectorAll('[data-yacht]').forEach(a => {
+    a.addEventListener('click', e => {
+      const v = e.currentTarget.dataset.yacht;
+      setTimeout(() => { yachtSelect.value = v; }, 600);
+    });
+  });
+
+  // ============================================================
+  // NAV scroll + burger
+  // ============================================================
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+
+  function closeMenu() {
+    burger.classList.remove('active');
+    navLinks.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function openMenu() {
+    burger.classList.add('active');
+    navLinks.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  burger.addEventListener('click', () => {
+    if (navLinks.classList.contains('open')) closeMenu();
+    else openMenu();
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', closeMenu);
+  });
+  // Fermer avec Echap (clavier physique)
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navLinks.classList.contains('open')) closeMenu();
+  });
+  // Fermer si on redimensionne au-dessus du breakpoint mobile
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 980 && navLinks.classList.contains('open')) closeMenu();
+  });
+
+  // ============================================================
+  // REVEAL on scroll
+  // ============================================================
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        en.target.classList.add('visible');
+        obs.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // ============================================================
+  // FORMULAIRE — envoi via Formspree (serveur, sans ouvrir de mail)
+  //
+  // CONFIGURATION : remplacez VOTRE_ID_FORMSPREE par l'ID obtenu
+  // sur https://formspree.io après création du formulaire.
+  // L'URL finale ressemble à : https://formspree.io/f/abcdwxyz
+  // ============================================================
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/VOTRE_ID_FORMSPREE';
+
+  const form = document.getElementById('reservationForm');
+  const fb   = document.getElementById('feedback');
+  const btn  = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    fb.classList.remove('show', 'ok', 'err');
+
+    const data = new FormData(form);
+    const required = ['prenom', 'nom', 'email', 'telephone', 'destination', 'type', 'dateDepart', 'adultes'];
+    for (const k of required) {
+      if (!data.get(k)) {
+        fb.textContent = "Veuillez compléter les champs marqués d'un astérisque.";
+        fb.classList.add('show', 'err');
+        return;
+      }
+    }
+    if (!document.getElementById('rgpd').checked) {
+      fb.textContent = "Merci d'accepter les conditions de traitement des données.";
+      fb.classList.add('show', 'err');
+      return;
+    }
+
+    // Récap des services cochés (FormData renvoie plusieurs valeurs)
+    const services = data.getAll('services').join(', ') || '—';
+    data.delete('services');
+    data.append('services_resume', services);
+
+    // Sujet personnalisé reçu dans la boîte mail
+    data.append('_subject', `Charter — ${data.get('prenom')} ${data.get('nom')} — ${data.get('destination')}`);
+    data.append('_replyto', data.get('email'));
+
+    btn.disabled = true;
+    btn.textContent = 'Envoi en cours…';
+
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        fb.textContent = "Votre demande nous a été transmise. Nous vous recontactons sous 24 h ouvrées.";
+        fb.classList.add('show', 'ok');
+        form.reset();
+        btn.textContent = 'Demande envoyée ✓';
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.innerHTML = 'Envoyer ma demande →';
+        }, 6000);
+      } else {
+        const json = await res.json().catch(() => ({}));
+        const msg = (json.errors && json.errors.map(e => e.message).join(', ')) ||
+                    "Une erreur est survenue. Merci de réessayer ou de nous écrire à contact@bristolmarine.fr.";
+        fb.textContent = msg;
+        fb.classList.add('show', 'err');
+        btn.disabled = false;
+        btn.innerHTML = 'Envoyer ma demande →';
+      }
+    } catch (err) {
+      fb.textContent = "Connexion impossible. Merci de réessayer ou de nous écrire à contact@bristolmarine.fr.";
+      fb.classList.add('show', 'err');
+      btn.disabled = false;
+      btn.innerHTML = 'Envoyer ma demande →';
+    }
+  });
+</script>
+
+</body>
+</html>
