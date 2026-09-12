@@ -2651,7 +2651,7 @@ const LOCATION = {
     var gal = '<div class="boat__gallery"><span class="boat__cat">'+esc(catLabel)+'</span>';
     if (boat.photos.length){
       boat.photos.forEach(function(p,i){
-        gal += '<img src="f/'+p+'.jpg" alt="'+esc(boat.name)+'" loading="lazy" class="'+(i===0?"on":"")+'">';
+        gal += '<img src="'+p+'.jpg" alt="'+esc(boat.name)+'" loading="lazy" class="'+(i===0?"on":"")+'">';
       });
       if (boat.photos.length>1){
         gal += '<div class="boat__nav"><button data-d="-1">‹</button><button data-d="1">›</button></div>';
