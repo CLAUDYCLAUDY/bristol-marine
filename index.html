@@ -11,8 +11,8 @@
 <meta name="format-detection" content="telephone=yes" />
 <title>Bristol Marine — Yacht Brokerage & Charter — France · UAE · Asia</title>
 <meta name="description" content="Bristol Marine — Maison nautique fondée en 1959. Vente, charter et gestion de yachts entre la Riviera, les Émirats et l'Asie." />
-<link rel="icon" type="image/jpeg" href="logo.jpeg" />
-<link rel="apple-touch-icon" href="logo.jpeg" />
+<link rel="icon" type="image/png" href="logo.png" />
+<link rel="apple-touch-icon" href="logo.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1372,6 +1372,121 @@
     }
     .reveal { opacity: 1 !important; transform: none !important; }
   }
+
+/* ===== LOCATION ===== */
+/* ============================================================
+   BRISTOL MARINE — Location (ajout)
+   ============================================================ */
+
+/* ---- sélecteur de langue ---- */
+.lang-switch { display:flex; gap:2px; align-items:center; margin-left:1rem; }
+.lang-switch button {
+  font-family:var(--sans); font-size:.68rem; letter-spacing:.08em; font-weight:500;
+  padding:5px 8px; background:none; border:none; cursor:pointer;
+  color:var(--texte-doux); opacity:.6; transition:.2s; border-radius:3px;
+}
+.lang-switch button.on { color:var(--vert-bristol); opacity:1; }
+.lang-switch button:hover { opacity:1; }
+
+/* ---- section ---- */
+.loc { background:var(--ivoire-pale); padding:clamp(4rem,9vw,7rem) 0; }
+.loc__inner { max-width:var(--max); margin:0 auto; padding:0 var(--gut); }
+.loc__head { text-align:center; max-width:640px; margin:0 auto clamp(2.5rem,5vw,4rem); }
+.loc__head .eyebrow { color:var(--vert-bristol); }
+.loc__head h2 { font-family:var(--serif); font-size:clamp(2rem,4vw,3.2rem); font-weight:500; line-height:1.1; margin:1rem 0; color:var(--marine); }
+.loc__head h2 em { font-style:italic; color:var(--vert-bristol); }
+.loc__head p { color:var(--texte-doux); font-size:1rem; line-height:1.8; }
+
+/* ---- onglets catégorie ---- */
+.loc__tabs { display:flex; justify-content:center; gap:0; margin-bottom:clamp(2rem,4vw,3rem); flex-wrap:wrap; border-bottom:1px solid var(--ligne); }
+.loc__tab {
+  font-family:var(--sans); font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; font-weight:500;
+  padding:14px 26px; background:none; border:none; cursor:pointer; color:var(--texte-doux);
+  position:relative; transition:color .25s;
+}
+.loc__tab::after { content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px; background:var(--vert-bristol); transform:scaleX(0); transition:transform .3s; }
+.loc__tab.on { color:var(--vert-bristol); }
+.loc__tab.on::after { transform:scaleX(1); }
+
+.loc__intro { text-align:center; color:var(--texte-doux); font-size:.95rem; line-height:1.75; max-width:620px; margin:0 auto clamp(2.5rem,5vw,3.5rem); }
+
+/* ---- grille de bateaux ---- */
+.loc__grid { display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(1.5rem,3vw,2.5rem); }
+.boat {
+  background:var(--ivoire); border:1px solid var(--ligne); overflow:hidden;
+  display:flex; flex-direction:column; transition:box-shadow .3s, transform .3s;
+}
+.boat:hover { box-shadow:0 18px 50px rgba(26,42,68,.12); transform:translateY(-3px); }
+
+/* galerie */
+.boat__gallery { position:relative; aspect-ratio:3/2; background:var(--sable); overflow:hidden; }
+.boat__gallery img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .5s; }
+.boat__gallery img.on { opacity:1; }
+.boat__ph { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:.6rem; color:var(--vert-fonce); background:var(--sable); }
+.boat__ph svg { opacity:.4; }
+.boat__ph span { font-family:var(--sans); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; opacity:.7; }
+.boat__nav { position:absolute; inset:0; display:flex; justify-content:space-between; align-items:center; padding:0 10px; opacity:0; transition:opacity .25s; }
+.boat__gallery:hover .boat__nav { opacity:1; }
+.boat__nav button { width:34px; height:34px; border-radius:50%; border:none; background:rgba(255,255,255,.85); color:var(--marine); font-size:1rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .2s; }
+.boat__nav button:hover { background:#fff; }
+.boat__dots { position:absolute; bottom:10px; left:0; right:0; display:flex; justify-content:center; gap:6px; }
+.boat__dots i { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.55); cursor:pointer; transition:background .2s; }
+.boat__dots i.on { background:#fff; }
+.boat__cat { position:absolute; top:12px; left:12px; z-index:2; font-family:var(--sans); font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:#fff; background:rgba(91,147,150,.92); padding:5px 11px; }
+
+/* corps */
+.boat__body { padding:clamp(1.4rem,2.5vw,2rem); display:flex; flex-direction:column; flex:1; }
+.boat__name { font-family:var(--serif); font-size:1.6rem; font-weight:500; color:var(--marine); line-height:1.15; margin-bottom:.5rem; }
+.boat__specs { display:flex; gap:1.2rem; flex-wrap:wrap; margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid var(--ligne); }
+.boat__spec { font-family:var(--sans); font-size:.76rem; color:var(--texte-doux); }
+.boat__spec strong { color:var(--vert-fonce); font-weight:600; }
+.boat__desc { font-size:.86rem; line-height:1.7; color:var(--texte-doux); margin-bottom:1rem; }
+.boat__desc.clamp { display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden; }
+.boat__more { align-self:flex-start; font-family:var(--sans); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--vert-bristol); background:none; border:none; cursor:pointer; padding:0; margin-bottom:1.2rem; font-weight:600; }
+
+.boat__block { margin-bottom:1rem; }
+.boat__block h4 { font-family:var(--sans); font-size:.64rem; letter-spacing:.16em; text-transform:uppercase; color:var(--sable-fonce); margin-bottom:.5rem; font-weight:600; }
+.boat__eq { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:1fr 1fr; gap:3px 14px; }
+.boat__eq li { font-size:.76rem; color:var(--texte-doux); line-height:1.5; padding-left:12px; position:relative; }
+.boat__eq li::before { content:''; position:absolute; left:0; top:.55em; width:5px; height:1px; background:var(--vert-bristol); }
+.boat__eq.hidden { display:none; }
+
+/* tarifs */
+.boat__tarifs { background:var(--ivoire-pale); border:1px solid var(--ligne); padding:1rem 1.2rem; margin-bottom:1rem; }
+.boat__tarif-note { font-size:.68rem; color:var(--vert-fonce); font-style:italic; margin-bottom:.6rem; }
+.boat__tarif-row { display:flex; justify-content:space-between; align-items:baseline; padding:5px 0; border-bottom:1px dashed var(--ligne); font-size:.82rem; }
+.boat__tarif-row:last-child { border-bottom:none; }
+.boat__tarif-row .k { color:var(--texte-doux); }
+.boat__tarif-row .v { font-family:var(--serif); font-size:1.05rem; font-weight:600; color:var(--marine); white-space:nowrap; }
+.boat__demande { font-family:var(--serif); font-size:1.15rem; font-style:italic; color:var(--vert-bristol); text-align:center; padding:.4rem 0; }
+.boat__infos { list-style:none; padding:0; margin:0; }
+.boat__infos li { font-size:.72rem; color:var(--texte-doux); line-height:1.6; padding-left:12px; position:relative; }
+.boat__infos li::before { content:'·'; position:absolute; left:2px; color:var(--vert-bristol); font-weight:700; }
+
+.boat__cta { margin-top:auto; display:flex; gap:.6rem; padding-top:1rem; }
+.boat__cta a { flex:1; text-align:center; font-family:var(--sans); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600; padding:12px; transition:.25s; }
+.boat__cta .resa { background:var(--vert-bristol); color:var(--ivoire-pale); }
+.boat__cta .resa:hover { background:var(--vert-fonce); }
+.boat__cta .wa { background:none; border:1px solid var(--vert-bristol); color:var(--vert-bristol); }
+.boat__cta .wa:hover { background:var(--vert-bristol); color:#fff; }
+
+/* ---- barre mobile fixe ---- */
+.mbar { display:none; }
+@media (max-width:820px){
+  .loc__grid { grid-template-columns:1fr; }
+  .boat__eq { grid-template-columns:1fr; }
+  .mbar {
+    display:flex; position:fixed; left:0; right:0; bottom:0; z-index:900;
+    background:var(--marine); box-shadow:0 -4px 20px rgba(0,0,0,.25);
+  }
+  .mbar a { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px;
+    padding:10px 4px 8px; color:var(--ivoire-pale); font-family:var(--sans); font-size:.6rem; letter-spacing:.06em; text-transform:uppercase; }
+  .mbar a svg { width:18px; height:18px; }
+  .mbar a.mbar-wa { background:#25d366; color:#fff; }
+  .mbar a.mbar-resa { background:var(--vert-bristol); color:#fff; }
+  body { padding-bottom:56px; }
+}
+
 </style>
 
 </head>
@@ -1381,7 +1496,7 @@
 
 <nav class="nav" id="nav">
   <a href="#top" class="nav__brand">
-    <img src="logo.jpeg" alt="Bristol Marine" />
+    <img src="logo.png" alt="Bristol Marine" />
     <span class="nav__brand-text">
       Bristol Marine
       <small>Since 1959</small>
@@ -1390,10 +1505,12 @@
   <div class="nav__links" id="navLinks">
     <a href="#histoire">Maison</a>
     <a href="#services">Métiers</a>
+    <a href="#location">Location</a>
     <a href="#charter">Charter</a>
     <a href="#expertise">Vente</a>
     <a href="#contact">Contact</a>
     <a href="#reserver" class="nav__cta">Réserver</a>
+    <div class="lang-switch" role="group" aria-label="Langue"><button data-l="fr" class="on">FR</button><button data-l="en">EN</button><button data-l="it">IT</button></div>
   </div>
   <button class="nav__burger" id="burger" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -1565,6 +1682,25 @@
 </section>
 
 <!-- ============== CHARTER FLEET ============== -->
+
+
+<!-- ============== LOCATION ============== -->
+<section class="loc" id="location">
+  <div class="loc__inner">
+    <div class="loc__head">
+      <span class="eyebrow" id="locEyebrow">Location</span>
+      <h2 id="locTitle">Prenez le large,<br><em>à votre rythme.</em></h2>
+      <p id="locSub">Sans permis, avec permis ou avec skipper — au départ du Port des Fourmis à Beaulieu-sur-Mer.</p>
+    </div>
+    <div class="loc__tabs">
+      <button class="loc__tab on" data-cat="sans-permis">Sans permis</button>
+      <button class="loc__tab" data-cat="avec-permis">Avec permis</button>
+      <button class="loc__tab" data-cat="avec-skipper">Avec skipper</button>
+    </div>
+    <p class="loc__intro" id="locIntro"></p>
+    <div class="loc__grid" id="locGrid"></div>
+  </div>
+</section>
 
 <section class="charter" id="charter">
   <div class="section__inner">
@@ -1877,7 +2013,7 @@
 <footer>
   <div class="foot">
     <div class="foot__brand">
-      <img src="logo.jpeg" alt="Bristol Marine" />
+      <img src="logo.png" alt="Bristol Marine" />
       <p>« L'art de la mer, en héritage. »<br/>Maison nautique fondée en 1959.</p>
     </div>
     <div>
@@ -2164,5 +2300,482 @@
   });
 </script>
 
+
+<!-- barre mobile réservation -->
+<nav class="mbar" aria-label="Contact rapide">
+  <a href="tel:+33612797247"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1A19.5 19.5 0 0 1 4.7 12 19.8 19.8 0 0 1 1.6 3.2 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.9 8.6a16 16 0 0 0 6.3 6.3l.9-.9a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Appeler</a>
+  <a class="mbar-wa" href="https://wa.me/33612797247" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4-.1-.5L9.3 6.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2z"/></svg>WhatsApp</a>
+  <a class="mbar-resa" href="#location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Réserver</a>
+</nav>
+
+<script>
+// ============================================================
+//  BRISTOL MARINE — Données de la flotte (Location)
+//  Trois catégories : sans permis · avec permis · avec skipper
+//  Descriptions FR reprises mot pour mot du document client.
+//  EN / IT : traductions fidèles, à relire.
+// ============================================================
+
+const LOCATION = {
+
+  "sans-permis": {
+    label: { fr: "Sans permis", en: "No licence", it: "Senza patente" },
+    intro: {
+      fr: "Aucun permis requis. Prise en main immédiate après un briefing simple, au départ du Port des Fourmis à Beaulieu-sur-Mer.",
+      en: "No licence required. Immediate handling after a simple briefing, departing from Port des Fourmis in Beaulieu-sur-Mer.",
+      it: "Nessuna patente richiesta. Utilizzo immediato dopo un semplice briefing, in partenza dal Port des Fourmis a Beaulieu-sur-Mer."
+    },
+    boats: [
+      {
+        id: "funyak",
+        name: "FUN YAK 6 cv",
+        photos: [],
+        cap: "5", length: "", power: "6 cv",
+        desc: {
+          fr: "Bateau sans permis FUN YAK 6cv à louer à la journée ou à la demi-journée. Au départ du Port des Fourmis à Beaulieu-sur-Mer, profitez de belles balades en mer entre Villefranche-sur-Mer et la plage de la Mala à Cap d'Ail. Facilité de navigation, tout confort et bien équipé.",
+          en: "FUN YAK 6hp no-licence boat, available for the day or half-day. Departing from Port des Fourmis in Beaulieu-sur-Mer, enjoy beautiful sea outings between Villefranche-sur-Mer and Mala beach in Cap d'Ail. Easy to handle, fully comfortable and well equipped.",
+          it: "Barca senza patente FUN YAK 6cv, a noleggio per la giornata o la mezza giornata. In partenza dal Port des Fourmis a Beaulieu-sur-Mer, godetevi splendide escursioni in mare tra Villefranche-sur-Mer e la spiaggia della Mala a Cap d'Ail. Facile da governare, confortevole e ben equipaggiata."
+        },
+        equip: {
+          fr: ["Un grand bain de soleil à l'avant", "Une banquette à l'arrière au niveau du poste de pilotage", "Un bimini", "Échelle de bain", "Coffres de rangement", "Capacité : 5 personnes", "Options sur place : équipements snorkeling", "Sur demande : snacking / boissons"],
+          en: ["A large sun deck at the bow", "A rear bench by the helm station", "A bimini top", "Bathing ladder", "Storage lockers", "Capacity: 5 people", "On-site options: snorkelling equipment", "On request: snacking / drinks"],
+          it: ["Un ampio prendisole a prua", "Una panca a poppa vicino alla postazione di guida", "Un bimini", "Scaletta da bagno", "Gavoni portaoggetti", "Capacità: 5 persone", "Opzioni sul posto: attrezzatura per snorkeling", "Su richiesta: snack / bevande"]
+        },
+        tarifs: { type: "grille", rows: [
+          { k: { fr: "Journée", en: "Full day", it: "Giornata" }, v: "260 € TTC" },
+          { k: { fr: "Demi-journée", en: "Half day", it: "Mezza giornata" }, v: "180 € TTC" }
+        ]},
+        infos: {
+          fr: ["Carburant : inclus", "Caution : 100 €", "Modes de paiement : CB et espèces"],
+          en: ["Fuel: included", "Deposit: €100", "Payment: card and cash"],
+          it: ["Carburante: incluso", "Cauzione: 100 €", "Pagamento: carta e contanti"]
+        }
+      }
+    ]
+  },
+
+  "avec-permis": {
+    label: { fr: "Avec permis", en: "With licence", it: "Con patente" },
+    intro: {
+      fr: "Pour les titulaires du permis côtier. Des bateaux fiables et bien équipés pour explorer la Riviera en toute autonomie.",
+      en: "For holders of a coastal licence. Reliable, well-equipped boats to explore the Riviera on your own.",
+      it: "Per i titolari della patente nautica costiera. Barche affidabili e ben equipaggiate per esplorare la Riviera in totale autonomia."
+    },
+    boats: [
+      {
+        id: "quicksilver",
+        name: "Quicksilver Commander 505",
+        photos: ["quicksilver-1","quicksilver-2"],
+        cap: "5", length: "5,05 m", power: "",
+        desc: {
+          fr: "Un bateau confortable et facile à naviguer. Le Quicksilver Commander 505 est un bateau de 5,05 mètres conçu pour offrir une navigation agréable et sécurisante.",
+          en: "A comfortable, easy-to-handle boat. The Quicksilver Commander 505 is a 5.05-metre boat designed to offer pleasant, reassuring navigation.",
+          it: "Una barca confortevole e facile da governare. Il Quicksilver Commander 505 è un'imbarcazione di 5,05 metri progettata per offrire una navigazione piacevole e sicura."
+        },
+        equip: {
+          fr: ["Longueur : 5,05 m", "Capacité maximale : 5 personnes", "Moteur performant et économique", "Grand bain de soleil à l'avant", "Taud de soleil pour vous protéger pendant les heures les plus chaudes", "Échelle de bain pour un accès facile à la mer", "Coffres de rangement", "Équipement de sécurité complet conforme à la réglementation"],
+          en: ["Length: 5.05 m", "Maximum capacity: 5 people", "Efficient, economical engine", "Large sun deck at the bow", "Sun awning to protect you during the hottest hours", "Bathing ladder for easy sea access", "Storage lockers", "Full safety equipment compliant with regulations"],
+          it: ["Lunghezza: 5,05 m", "Capacità massima: 5 persone", "Motore performante ed economico", "Ampio prendisole a prua", "Tendalino parasole per proteggervi nelle ore più calde", "Scaletta da bagno per un facile accesso al mare", "Gavoni portaoggetti", "Dotazione di sicurezza completa e conforme alla normativa"]
+        },
+        tarifs: { type: "grille", rows: [
+          { k: { fr: "Journée", en: "Full day", it: "Giornata" }, v: "390 € TTC" },
+          { k: { fr: "Demi-journée", en: "Half day", it: "Mezza giornata" }, v: "250 € TTC" }
+        ]},
+        infos: {
+          fr: ["Carburant : non inclus", "Caution : 2 500 €", "Modes de paiement : CB et espèces"],
+          en: ["Fuel: not included", "Deposit: €2,500", "Payment: card and cash"],
+          it: ["Carburante: non incluso", "Cauzione: 2 500 €", "Pagamento: carta e contanti"]
+        }
+      },
+      {
+        id: "colibri",
+        name: "Bénéteau Flyer 550 Open",
+        photos: ["colibri-1","colibri-2","colibri-3","colibri-4"],
+        cap: "6", length: "", power: "",
+        desc: {
+          fr: "Un bateau conçu pour le plaisir. Le Bénéteau Flyer 550 Open est reconnu pour sa maniabilité et sa coque performante, offrant une navigation agréable aussi bien aux plaisanciers expérimentés qu'aux navigateurs occasionnels. Son pont dégagé et son aménagement optimisé permettent de circuler facilement à bord tout en profitant pleinement des espaces de détente.",
+          en: "A boat built for pleasure. The Bénéteau Flyer 550 Open is renowned for its handling and high-performance hull, offering pleasant navigation to experienced boaters and occasional sailors alike. Its clear deck and optimised layout make it easy to move around on board while fully enjoying the relaxation areas.",
+          it: "Una barca pensata per il piacere. Il Bénéteau Flyer 550 Open è noto per la sua manovrabilità e la carena performante, offrendo una navigazione piacevole sia ai diportisti esperti sia ai navigatori occasionali. Il ponte sgombro e la disposizione ottimizzata permettono di muoversi facilmente a bordo godendo appieno degli spazi relax."
+        },
+        equip: {
+          fr: ["Capacité jusqu'à 6 personnes", "Grand bain de soleil avant", "Cockpit spacieux et convivial", "Banquette arrière confortable", "Échelle de bain", "Taud de soleil", "Nombreux espaces de rangement", "Navigation facile et sécurisante"],
+          en: ["Capacity up to 6 people", "Large forward sun deck", "Spacious, convivial cockpit", "Comfortable rear bench", "Bathing ladder", "Sun awning", "Ample storage space", "Easy, reassuring navigation"],
+          it: ["Capacità fino a 6 persone", "Ampio prendisole a prua", "Pozzetto spazioso e conviviale", "Comoda panca a poppa", "Scaletta da bagno", "Tendalino parasole", "Numerosi spazi portaoggetti", "Navigazione facile e sicura"]
+        },
+        tarifs: { type: "grille", rows: [
+          { k: { fr: "Journée", en: "Full day", it: "Giornata" }, v: "400 € TTC" },
+          { k: { fr: "Demi-journée", en: "Half day", it: "Mezza giornata" }, v: "290 € TTC" }
+        ]},
+        infos: {
+          fr: ["Carburant : non inclus", "Caution : 2 500 €", "Modes de paiement : CB et espèces"],
+          en: ["Fuel: not included", "Deposit: €2,500", "Payment: card and cash"],
+          it: ["Carburante: non incluso", "Cauzione: 2 500 €", "Pagamento: carta e contanti"]
+        }
+      },
+      {
+        id: "azad",
+        name: "Bénéteau Flyer 650 Cabrio",
+        photos: ["azad-1","azad-2","azad-3","azad-4","azad-5"],
+        cap: "7", length: "6,50 m", power: "",
+        desc: {
+          fr: "Reconnu pour son excellente tenue en mer et sa grande maniabilité, le Flyer 650 Cabrio est le choix idéal pour une journée de navigation en famille, entre amis ou en couple. Son design moderne et ses nombreux équipements vous garantissent une sortie agréable, que vous souhaitiez vous détendre au soleil, explorer les criques de la Riviera ou partager un déjeuner face à la mer. Un bateau confortable et parfaitement équipé. Avec ses 6,50 mètres de longueur, le Beneteau Flyer 650 Cabrio offre un excellent compromis entre performance, confort et sécurité. Son cockpit ergonomique permet de partager un moment convivial à bord, tandis que son bain de soleil avant est parfait pour profiter pleinement du climat méditerranéen. La cabine apporte un véritable confort supplémentaire pour entreposer vos affaires ou faire une pause à l'ombre.",
+          en: "Renowned for its excellent sea-keeping and great manoeuvrability, the Flyer 650 Cabrio is the ideal choice for a day's navigation with family, friends or as a couple. Its modern design and extensive equipment guarantee a pleasant outing, whether you wish to relax in the sun, explore the coves of the Riviera or share lunch facing the sea. A comfortable, perfectly equipped boat. At 6.50 metres long, the Beneteau Flyer 650 Cabrio offers an excellent balance of performance, comfort and safety. Its ergonomic cockpit lets you share a convivial moment on board, while its forward sun deck is perfect for fully enjoying the Mediterranean climate. The cabin brings genuine extra comfort to store your belongings or take a break in the shade.",
+          it: "Rinomato per l'eccellente tenuta di mare e la grande manovrabilità, il Flyer 650 Cabrio è la scelta ideale per una giornata di navigazione in famiglia, tra amici o in coppia. Il design moderno e le numerose dotazioni garantiscono un'uscita piacevole, sia che desideriate rilassarvi al sole, esplorare le calette della Riviera o condividere un pranzo di fronte al mare. Una barca confortevole e perfettamente equipaggiata. Con i suoi 6,50 metri di lunghezza, il Beneteau Flyer 650 Cabrio offre un ottimo compromesso tra prestazioni, comfort e sicurezza. Il pozzetto ergonomico permette di condividere un momento conviviale a bordo, mentre il prendisole di prua è perfetto per godere appieno del clima mediterraneo. La cabina offre un vero comfort supplementare per riporre le vostre cose o fare una pausa all'ombra."
+        },
+        equip: {
+          fr: ["Longueur : 6,50 m", "Capacité maximale : 7 personnes", "Moteur puissant, fiable et économique", "Grand bain de soleil à l'avant", "Cockpit spacieux et convivial", "Taud de soleil", "Cabine pour ranger vos effets personnels ou vous abriter", "Douchette d'eau douce", "Échelle de bain", "GPS", "Sondeur", "Coffres de rangement", "Équipement de sécurité conforme à la réglementation"],
+          en: ["Length: 6.50 m", "Maximum capacity: 7 people", "Powerful, reliable, economical engine", "Large sun deck at the bow", "Spacious, convivial cockpit", "Sun awning", "Cabin to store your belongings or take shelter", "Freshwater shower", "Bathing ladder", "GPS", "Depth sounder", "Storage lockers", "Safety equipment compliant with regulations"],
+          it: ["Lunghezza: 6,50 m", "Capacità massima: 7 persone", "Motore potente, affidabile ed economico", "Ampio prendisole a prua", "Pozzetto spazioso e conviviale", "Tendalino parasole", "Cabina per riporre gli effetti personali o ripararsi", "Doccetta d'acqua dolce", "Scaletta da bagno", "GPS", "Ecoscandaglio", "Gavoni portaoggetti", "Dotazione di sicurezza conforme alla normativa"]
+        },
+        tarifs: { type: "grille", rows: [
+          { k: { fr: "Journée", en: "Full day", it: "Giornata" }, v: "550 € TTC" },
+          { k: { fr: "Demi-journée", en: "Half day", it: "Mezza giornata" }, v: "400 € TTC" }
+        ]},
+        infos: {
+          fr: ["Carburant : non inclus", "Caution : 3 000 €", "Modes de paiement : CB et espèces"],
+          en: ["Fuel: not included", "Deposit: €3,000", "Payment: card and cash"],
+          it: ["Carburante: non incluso", "Cauzione: 3 000 €", "Pagamento: carta e contanti"]
+        }
+      },
+      {
+        id: "capcamarat",
+        name: "Jeanneau Cap Camarat 9.0 WA",
+        photos: ["capcamarat-1","capcamarat-2","capcamarat-3"],
+        cap: "10", length: "8,60 m", power: "2 × 200 ch",
+        desc: {
+          fr: "Découvrez la Côte d'Azur à bord de notre Jeanneau Cap Camarat 9.0 WA, un bateau haut de gamme conçu pour offrir une expérience de navigation alliant puissance, confort et élégance. Disponible à la location au départ du Port des Fourmis à Beaulieu-sur-Mer, il est le choix idéal pour une journée en mer en famille, entre amis ou pour célébrer une occasion particulière. Grâce à sa carène performante, ses équipements premium et ses grands espaces de vie, le Cap Camarat 9.0 WA vous permettra d'explorer les plus beaux paysages de la Riviera, entre Saint-Jean-Cap-Ferrat, Villefranche-sur-Mer, Èze, Cap d'Ail et Monaco, dans un confort exceptionnel. Un bateau premium pensé pour le plaisir en mer. Avec ses 8,60 mètres de longueur, le Jeanneau Cap Camarat 9.0 WA offre des prestations dignes d'un yacht de journée. Son design moderne, ses finitions soignées et ses nombreux équipements en font l'un des modèles les plus appréciés de sa catégorie. Propulsé par deux moteurs Yamaha de 200 ch, le Cap Camarat 9.0 WA offre une navigation puissante, stable et sécurisante. Son propulseur d'étrave facilite les manœuvres dans les ports, tandis que son GPS et son sondeur garantissent une navigation sereine. À bord, chacun trouve son espace : profitez du vaste bain de soleil à l'avant pour vous détendre, partagez un déjeuner dans le cockpit ombragé ou faites une pause dans la cabine confortable équipée d'un WC indépendant. Le réfrigérateur, la gazinière et les prises USB apportent un confort supplémentaire pour profiter pleinement de votre journée.",
+          en: "Discover the Côte d'Azur aboard our Jeanneau Cap Camarat 9.0 WA, a premium boat designed to offer a navigation experience combining power, comfort and elegance. Available to rent from Port des Fourmis in Beaulieu-sur-Mer, it is the ideal choice for a day at sea with family, friends or to celebrate a special occasion. Thanks to its high-performance hull, premium equipment and large living spaces, the Cap Camarat 9.0 WA lets you explore the finest landscapes of the Riviera — between Saint-Jean-Cap-Ferrat, Villefranche-sur-Mer, Èze, Cap d'Ail and Monaco — in exceptional comfort. A premium boat designed for pleasure at sea. At 8.60 metres long, the Jeanneau Cap Camarat 9.0 WA offers amenities worthy of a day yacht. Its modern design, careful finish and extensive equipment make it one of the most appreciated models in its category. Powered by two 200 hp Yamaha engines, the Cap Camarat 9.0 WA offers powerful, stable and reassuring navigation. Its bow thruster eases manoeuvres in port, while its GPS and depth sounder ensure serene navigation. On board, everyone finds their space: enjoy the vast forward sun deck to relax, share lunch in the shaded cockpit or take a break in the comfortable cabin equipped with an independent WC. The refrigerator, cooker and USB sockets add extra comfort to fully enjoy your day.",
+          it: "Scoprite la Costa Azzurra a bordo del nostro Jeanneau Cap Camarat 9.0 WA, una barca di alta gamma progettata per offrire un'esperienza di navigazione che unisce potenza, comfort ed eleganza. Disponibile a noleggio in partenza dal Port des Fourmis a Beaulieu-sur-Mer, è la scelta ideale per una giornata in mare in famiglia, tra amici o per festeggiare un'occasione speciale. Grazie alla carena performante, alle dotazioni premium e agli ampi spazi vitali, il Cap Camarat 9.0 WA vi permetterà di esplorare i più bei paesaggi della Riviera, tra Saint-Jean-Cap-Ferrat, Villefranche-sur-Mer, Èze, Cap d'Ail e Monaco, in un comfort eccezionale. Una barca premium pensata per il piacere in mare. Con i suoi 8,60 metri di lunghezza, il Jeanneau Cap Camarat 9.0 WA offre prestazioni degne di uno yacht da giornata. Il design moderno, le finiture curate e le numerose dotazioni ne fanno uno dei modelli più apprezzati della categoria. Spinto da due motori Yamaha da 200 cv, il Cap Camarat 9.0 WA offre una navigazione potente, stabile e sicura. L'elica di prua facilita le manovre nei porti, mentre il GPS e l'ecoscandaglio garantiscono una navigazione serena. A bordo, ognuno trova il suo spazio: godetevi l'ampio prendisole di prua per rilassarvi, condividete un pranzo nel pozzetto ombreggiato o fate una pausa nella comoda cabina dotata di WC indipendente. Il frigorifero, il fornello e le prese USB offrono un comfort supplementare per godere appieno della vostra giornata."
+        },
+        equip: {
+          fr: ["Longueur : 8,60 m", "Capacité maximale : 10 personnes", "Deux moteurs Yamaha de 200 ch chacun (400 ch au total)", "Grand bain de soleil à l'avant", "Cockpit arrière spacieux avec table à manger", "Cabine confortable", "WC marin indépendant", "Douchette de pont à eau douce", "Plateformes de bain avec échelle", "Taud de soleil", "Guindeau électrique", "GPS / Traceur de cartes", "Sondeur", "Propulseur d'étrave facilitant les manœuvres", "Réfrigérateur", "Petite gazinière", "Prises USB", "Système audio Bluetooth", "Équipement de sécurité complet conforme à la réglementation"],
+          en: ["Length: 8.60 m", "Maximum capacity: 10 people", "Two Yamaha engines of 200 hp each (400 hp total)", "Large sun deck at the bow", "Spacious aft cockpit with dining table", "Comfortable cabin", "Independent marine WC", "Freshwater deck shower", "Bathing platforms with ladder", "Sun awning", "Electric windlass", "GPS / chart plotter", "Depth sounder", "Bow thruster easing manoeuvres", "Refrigerator", "Small cooker", "USB sockets", "Bluetooth audio system", "Full safety equipment compliant with regulations"],
+          it: ["Lunghezza: 8,60 m", "Capacità massima: 10 persone", "Due motori Yamaha da 200 cv ciascuno (400 cv totali)", "Ampio prendisole a prua", "Pozzetto poppiero spazioso con tavolo da pranzo", "Cabina confortevole", "WC marino indipendente", "Doccetta di coperta ad acqua dolce", "Piattaforme da bagno con scaletta", "Tendalino parasole", "Salpancora elettrico", "GPS / cartografico", "Ecoscandaglio", "Elica di prua per agevolare le manovre", "Frigorifero", "Piccolo fornello", "Prese USB", "Impianto audio Bluetooth", "Dotazione di sicurezza completa e conforme alla normativa"]
+        },
+        tarifs: { type: "grille", rows: [
+          { k: { fr: "Journée", en: "Full day", it: "Giornata" }, v: "1 100 € TTC" },
+          { k: { fr: "Demi-journée", en: "Half day", it: "Mezza giornata" }, v: "700 € TTC" }
+        ]},
+        infos: {
+          fr: ["Carburant : non inclus", "Caution : 5 000 €", "Modes de paiement : CB et espèces"],
+          en: ["Fuel: not included", "Deposit: €5,000", "Payment: card and cash"],
+          it: ["Carburante: non incluso", "Cauzione: 5 000 €", "Pagamento: carta e contanti"]
+        }
+      }
+    ]
+  },
+
+  "avec-skipper": {
+    label: { fr: "Avec skipper", en: "With skipper", it: "Con skipper" },
+    intro: {
+      fr: "Un skipper professionnel à la barre. Vous profitez, il navigue. Une sélection d'unités premium pour une journée en mer sans souci.",
+      en: "A professional skipper at the helm. You enjoy, he navigates. A selection of premium boats for a carefree day at sea.",
+      it: "Uno skipper professionista al timone. Voi vi godete, lui naviga. Una selezione di imbarcazioni premium per una giornata in mare senza pensieri."
+    },
+    boats: [
+      {
+        id: "flyer750",
+        name: "Bénéteau Flyer 750 SD",
+        photos: ["flyer750-1","flyer750-2","flyer750-3","flyer750-4"],
+        cap: "8", length: "", power: "",
+        desc: {
+          fr: "Un bateau pensé pour le confort. Le Bénéteau Flyer 750 Sun Deck séduit par son design moderne, ses lignes sportives et ses espaces de vie généreux. Son grand bain de soleil avant, son cockpit convivial et sa cabine offrent tout le confort nécessaire pour une journée en mer. Grâce à sa motorisation performante, il vous permettra de rejoindre rapidement les plus beaux sites de la Côte d'Azur tout en profitant d'une navigation stable et agréable.",
+          en: "A boat designed for comfort. The Bénéteau Flyer 750 Sun Deck charms with its modern design, sporty lines and generous living spaces. Its large forward sun deck, convivial cockpit and cabin offer all the comfort needed for a day at sea. Thanks to its high-performance engine, it lets you quickly reach the finest spots of the Côte d'Azur while enjoying stable, pleasant navigation.",
+          it: "Una barca pensata per il comfort. Il Bénéteau Flyer 750 Sun Deck conquista per il design moderno, le linee sportive e gli ampi spazi vitali. Il grande prendisole di prua, il pozzetto conviviale e la cabina offrono tutto il comfort necessario per una giornata in mare. Grazie alla motorizzazione performante, vi permetterà di raggiungere rapidamente i più bei siti della Costa Azzurra godendo di una navigazione stabile e piacevole."
+        },
+        equip: {
+          fr: ["Jusqu'à 8 passagers (hors skipper)", "Location avec skipper professionnel", "Grand bain de soleil avant", "Cockpit spacieux avec table pour les repas", "Cabine pour se reposer ou se changer", "Taud de soleil", "Échelle de bain", "Plateforme arrière facilitant la baignade", "Système audio Bluetooth", "Nombreux espaces de rangement"],
+          en: ["Up to 8 passengers (excluding skipper)", "Rental with professional skipper", "Large forward sun deck", "Spacious cockpit with dining table", "Cabin to rest or change", "Sun awning", "Bathing ladder", "Rear platform for easy swimming", "Bluetooth audio system", "Ample storage space"],
+          it: ["Fino a 8 passeggeri (escluso skipper)", "Noleggio con skipper professionista", "Ampio prendisole di prua", "Pozzetto spazioso con tavolo per i pasti", "Cabina per riposare o cambiarsi", "Tendalino parasole", "Scaletta da bagno", "Piattaforma poppiera per agevolare la balneazione", "Impianto audio Bluetooth", "Numerosi spazi portaoggetti"]
+        },
+        tarifs: { type: "grille", note: { fr: "Skipper, carburant et soft drinks inclus", en: "Skipper, fuel and soft drinks included", it: "Skipper, carburante e soft drink inclusi" }, rows: [
+          { k: { fr: "Journée · 9h-17h ou 10h-18h", en: "Full day · 9am-5pm or 10am-6pm", it: "Giornata · 9-17 o 10-18" }, v: "1 100 € TTC" },
+          { k: { fr: "Demi-journée · 9h-13h ou 14h-18h", en: "Half day · 9am-1pm or 2pm-6pm", it: "Mezza giornata · 9-13 o 14-18" }, v: "700 € TTC" },
+          { k: { fr: "Sunset · 19h-21h", en: "Sunset · 7pm-9pm", it: "Sunset · 19-21" }, v: "400 € TTC" }
+        ]},
+        infos: {
+          fr: ["Navigation locale : entre Monaco et Villefranche-sur-Mer", "Départ Beaulieu · Saint-Jean-Cap-Ferrat · Èze : inclus", "Départ Villefranche-sur-Mer · Cap d'Ail · Monaco : supplément 200 €", "Départ Nice : supplément 250 €", "Modes de paiement : CB et espèces"],
+          en: ["Local navigation: between Monaco and Villefranche-sur-Mer", "Departure Beaulieu · Saint-Jean-Cap-Ferrat · Èze: included", "Departure Villefranche-sur-Mer · Cap d'Ail · Monaco: €200 supplement", "Departure Nice: €250 supplement", "Payment: card and cash"],
+          it: ["Navigazione locale: tra Monaco e Villefranche-sur-Mer", "Partenza Beaulieu · Saint-Jean-Cap-Ferrat · Èze: inclusa", "Partenza Villefranche-sur-Mer · Cap d'Ail · Monaco: supplemento 200 €", "Partenza Nizza: supplemento 250 €", "Pagamento: carta e contanti"]
+        }
+      },
+      {
+        id: "invictus",
+        name: "Invictus GT280",
+        photos: ["invictus-1","invictus-2","invictus-3"],
+        cap: "8", length: "", power: "",
+        desc: {
+          fr: "Le raffinement italien au service de votre confort. Avec ses lignes modernes et son aménagement haut de gamme, l'Invictus GT280 offre des espaces généreux et parfaitement pensés pour une journée en mer. À l'avant, un vaste bain de soleil vous invite à la détente. À l'arrière, le cockpit convivial avec sa table permet de partager un déjeuner ou un apéritif face à la mer. La cabine intérieure offre un espace confortable pour se reposer, se changer ou mettre les plus jeunes à l'abri du soleil.",
+          en: "Italian refinement serving your comfort. With its modern lines and high-end fit-out, the Invictus GT280 offers generous, perfectly designed spaces for a day at sea. At the bow, a vast sun deck invites you to relax. Aft, the convivial cockpit with its table lets you share lunch or an aperitif facing the sea. The interior cabin offers a comfortable space to rest, change or shelter the youngest from the sun.",
+          it: "La raffinatezza italiana al servizio del vostro comfort. Con le sue linee moderne e gli allestimenti di alta gamma, l'Invictus GT280 offre spazi generosi e perfettamente studiati per una giornata in mare. A prua, un ampio prendisole vi invita al relax. A poppa, il pozzetto conviviale con tavolo permette di condividere un pranzo o un aperitivo di fronte al mare. La cabina interna offre uno spazio confortevole per riposare, cambiarsi o riparare i più piccoli dal sole."
+        },
+        equip: {
+          fr: ["Jusqu'à 8 passagers (hors skipper)", "Location avec skipper professionnel", "Grand bain de soleil avant", "Salon arrière avec table", "Bain de soleil arrière", "Plateformes de bain facilitant l'accès à la mer", "Échelle de bain", "Taud de soleil", "Cabine avec couchage et WC", "Réfrigérateur", "Douchette de pont", "Propulseur d'étrave", "Système audio Bluetooth", "Nombreux rangements"],
+          en: ["Up to 8 passengers (excluding skipper)", "Rental with professional skipper", "Large forward sun deck", "Aft lounge with table", "Aft sun deck", "Bathing platforms for easy sea access", "Bathing ladder", "Sun awning", "Cabin with berth and WC", "Refrigerator", "Deck shower", "Bow thruster", "Bluetooth audio system", "Ample storage"],
+          it: ["Fino a 8 passeggeri (escluso skipper)", "Noleggio con skipper professionista", "Ampio prendisole di prua", "Salotto poppiero con tavolo", "Prendisole di poppa", "Piattaforme da bagno per un facile accesso al mare", "Scaletta da bagno", "Tendalino parasole", "Cabina con posto letto e WC", "Frigorifero", "Doccetta di coperta", "Elica di prua", "Impianto audio Bluetooth", "Numerosi vani portaoggetti"]
+        },
+        tarifs: { type: "demande" },
+        infos: { fr: ["Modes de paiement : CB et espèces"], en: ["Payment: card and cash"], it: ["Pagamento: carta e contanti"] }
+      },
+      {
+        id: "rand",
+        name: "Rand Escape 30",
+        photos: ["rand-1","rand-2","rand-3"],
+        cap: "10", length: "", power: "",
+        desc: {
+          fr: "Un bateau élégant, spacieux et convivial. Pensé pour le bien-être à bord, le Rand Escape 30 offre une circulation fluide et de vastes espaces de détente. Son cockpit modulable permet de créer un véritable salon extérieur, idéal pour partager un repas, savourer un apéritif ou simplement admirer les paysages de la Riviera. À l'avant, un grand bain de soleil invite à la détente, tandis que la plateforme de bain facilite l'accès à la mer pour profiter pleinement des eaux cristallines de la Méditerranée.",
+          en: "An elegant, spacious and convivial boat. Designed for well-being on board, the Rand Escape 30 offers smooth circulation and vast relaxation areas. Its modular cockpit creates a genuine outdoor lounge, ideal for sharing a meal, savouring an aperitif or simply admiring the Riviera landscapes. At the bow, a large sun deck invites you to relax, while the bathing platform eases sea access to fully enjoy the crystal-clear waters of the Mediterranean.",
+          it: "Una barca elegante, spaziosa e conviviale. Pensato per il benessere a bordo, il Rand Escape 30 offre una circolazione fluida e ampi spazi relax. Il pozzetto modulabile permette di creare un vero salotto esterno, ideale per condividere un pasto, gustare un aperitivo o semplicemente ammirare i paesaggi della Riviera. A prua, un ampio prendisole invita al relax, mentre la piattaforma da bagno facilita l'accesso al mare per godere appieno delle acque cristalline del Mediterraneo."
+        },
+        equip: {
+          fr: ["Jusqu'à 10 passagers (hors skipper)", "Location avec skipper professionnel", "Grand bain de soleil avant", "Cockpit modulable avec grande table", "Plateforme de bain spacieuse", "Échelle de bain", "Réfrigérateur", "Douche de pont", "Taud de soleil", "Propulseur d'étrave", "Système audio Bluetooth", "Cabine pour se reposer ou se changer", "Nombreux espaces de rangement"],
+          en: ["Up to 10 passengers (excluding skipper)", "Rental with professional skipper", "Large forward sun deck", "Modular cockpit with large table", "Spacious bathing platform", "Bathing ladder", "Refrigerator", "Deck shower", "Sun awning", "Bow thruster", "Bluetooth audio system", "Cabin to rest or change", "Ample storage space"],
+          it: ["Fino a 10 passeggeri (escluso skipper)", "Noleggio con skipper professionista", "Ampio prendisole di prua", "Pozzetto modulabile con grande tavolo", "Piattaforma da bagno spaziosa", "Scaletta da bagno", "Frigorifero", "Doccia di coperta", "Tendalino parasole", "Elica di prua", "Impianto audio Bluetooth", "Cabina per riposare o cambiarsi", "Numerosi spazi portaoggetti"]
+        },
+        tarifs: { type: "demande" },
+        infos: { fr: ["Modes de paiement : CB et espèces"], en: ["Payment: card and cash"], it: ["Pagamento: carta e contanti"] }
+      },
+      {
+        id: "sunseeker",
+        name: "Sunseeker Superhawk 34",
+        photos: ["sunseeker-1","sunseeker-2","sunseeker-3","sunseeker-4"],
+        cap: "8", length: "", power: "",
+        desc: {
+          fr: "Un yacht sportif au confort exceptionnel. Le Sunseeker Superhawk 34 offre un équilibre parfait entre puissance et raffinement. Son cockpit spacieux est conçu pour recevoir vos invités dans une ambiance élégante, tandis que ses vastes bains de soleil à l'avant et à l'arrière invitent à la détente tout au long de la journée. À l'intérieur, une cabine confortable avec salle d'eau permet de profiter pleinement de votre croisière, que ce soit pour se reposer ou se changer avant une baignade.",
+          en: "A sporty yacht with exceptional comfort. The Sunseeker Superhawk 34 offers a perfect balance of power and refinement. Its spacious cockpit is designed to host your guests in an elegant atmosphere, while its vast sun decks fore and aft invite relaxation throughout the day. Inside, a comfortable cabin with a shower room lets you fully enjoy your cruise, whether to rest or change before a swim.",
+          it: "Uno yacht sportivo dal comfort eccezionale. Il Sunseeker Superhawk 34 offre un equilibrio perfetto tra potenza e raffinatezza. Il pozzetto spazioso è concepito per accogliere i vostri ospiti in un'atmosfera elegante, mentre gli ampi prendisole a prua e a poppa invitano al relax per tutta la giornata. All'interno, una comoda cabina con bagno permette di godere appieno della crociera, sia per riposare sia per cambiarsi prima di un bagno."
+        },
+        equip: {
+          fr: ["Jusqu'à 8 passagers (hors skipper)", "Location avec skipper professionnel", "Grand bain de soleil avant", "Bain de soleil arrière", "Cockpit avec salon et table", "Cabine avec couchage", "Salle d'eau avec WC", "Réfrigérateur", "Douche de pont", "Plateforme de bain", "Échelle de bain", "Système audio Bluetooth", "Nombreux espaces de rangement"],
+          en: ["Up to 8 passengers (excluding skipper)", "Rental with professional skipper", "Large forward sun deck", "Aft sun deck", "Cockpit with lounge and table", "Cabin with berth", "Shower room with WC", "Refrigerator", "Deck shower", "Bathing platform", "Bathing ladder", "Bluetooth audio system", "Ample storage space"],
+          it: ["Fino a 8 passeggeri (escluso skipper)", "Noleggio con skipper professionista", "Ampio prendisole di prua", "Prendisole di poppa", "Pozzetto con salotto e tavolo", "Cabina con posto letto", "Bagno con WC", "Frigorifero", "Doccia di coperta", "Piattaforma da bagno", "Scaletta da bagno", "Impianto audio Bluetooth", "Numerosi spazi portaoggetti"]
+        },
+        tarifs: { type: "demande" },
+        infos: { fr: ["Modes de paiement : CB et espèces"], en: ["Payment: card and cash"], it: ["Pagamento: carta e contanti"] }
+      },
+      {
+        id: "joker",
+        name: "Joker Boat Mainstream 800 EFB",
+        photos: ["joker-1","joker-2","joker-3"],
+        cap: "10", length: "", power: "",
+        desc: {
+          fr: "Un semi-rigide premium conçu pour le plaisir. Le Joker Boat Mainstream 800 EFB a été pensé pour offrir un maximum de confort à ses passagers. Son vaste pont, ses espaces de détente et sa circulation fluide à bord permettent de profiter pleinement de la mer en toute convivialité. À l'avant, un grand bain de soleil vous invite à la détente, tandis que le cockpit arrière, équipé d'une table, est parfait pour partager un déjeuner ou un apéritif face aux plus beaux panoramas de la Méditerranée.",
+          en: "A premium RIB designed for pleasure. The Joker Boat Mainstream 800 EFB was designed to offer maximum comfort to its passengers. Its vast deck, relaxation areas and smooth on-board circulation let you fully enjoy the sea in complete conviviality. At the bow, a large sun deck invites you to relax, while the aft cockpit, fitted with a table, is perfect for sharing lunch or an aperitif facing the finest panoramas of the Mediterranean.",
+          it: "Un gommone premium concepito per il piacere. Il Joker Boat Mainstream 800 EFB è stato pensato per offrire il massimo comfort ai passeggeri. L'ampio ponte, gli spazi relax e la circolazione fluida a bordo permettono di godere appieno del mare in totale convivialità. A prua, un grande prendisole invita al relax, mentre il pozzetto poppiero, dotato di tavolo, è perfetto per condividere un pranzo o un aperitivo di fronte ai più bei panorami del Mediterraneo."
+        },
+        equip: {
+          fr: ["Jusqu'à 10 passagers (hors skipper)", "Location avec skipper professionnel", "Grand bain de soleil avant", "Salon arrière avec table", "Banquette arrière confortable", "Plateformes de bain", "Échelle de bain", "Taud de soleil", "Réfrigérateur", "Douche de pont", "Système audio Bluetooth", "Nombreux espaces de rangement"],
+          en: ["Up to 10 passengers (excluding skipper)", "Rental with professional skipper", "Large forward sun deck", "Aft lounge with table", "Comfortable rear bench", "Bathing platforms", "Bathing ladder", "Sun awning", "Refrigerator", "Deck shower", "Bluetooth audio system", "Ample storage space"],
+          it: ["Fino a 10 passeggeri (escluso skipper)", "Noleggio con skipper professionista", "Ampio prendisole di prua", "Salotto poppiero con tavolo", "Comoda panca a poppa", "Piattaforme da bagno", "Scaletta da bagno", "Tendalino parasole", "Frigorifero", "Doccia di coperta", "Impianto audio Bluetooth", "Numerosi spazi portaoggetti"]
+        },
+        tarifs: { type: "demande" },
+        infos: { fr: ["Modes de paiement : CB et espèces"], en: ["Payment: card and cash"], it: ["Pagamento: carta e contanti"] }
+      },
+      {
+        id: "renier",
+        name: "Renier R9",
+        photos: ["renier-1","renier-2","renier-3"],
+        cap: "10", length: "", power: "",
+        desc: {
+          fr: "L'élégance italienne au service de votre confort. Conçu pour offrir une navigation agréable et des espaces de vie généreux, le Renier R9 séduit par son cockpit spacieux, ses larges bains de soleil et son excellente habitabilité. Chaque détail a été pensé pour maximiser le confort à bord : sellerie haut de gamme, espaces de rangement, plateforme de bain, douche de pont et équipements modernes vous permettront de profiter pleinement de votre journée en mer.",
+          en: "Italian elegance serving your comfort. Designed to offer pleasant navigation and generous living spaces, the Renier R9 charms with its spacious cockpit, wide sun decks and excellent habitability. Every detail was designed to maximise comfort on board: high-end upholstery, storage spaces, bathing platform, deck shower and modern equipment will let you fully enjoy your day at sea.",
+          it: "L'eleganza italiana al servizio del vostro comfort. Progettato per offrire una navigazione piacevole e spazi vitali generosi, il Renier R9 conquista per il pozzetto spazioso, gli ampi prendisole e l'eccellente abitabilità. Ogni dettaglio è stato pensato per massimizzare il comfort a bordo: selleria di alta gamma, vani portaoggetti, piattaforma da bagno, doccia di coperta e dotazioni moderne vi permetteranno di godere appieno della vostra giornata in mare."
+        },
+        equip: {
+          fr: ["Jusqu'à 10 passagers (hors skipper)", "Location avec skipper professionnel", "Grand bain de soleil avant", "Salon arrière avec grande table", "Plateforme de bain avec échelle", "Taud de soleil", "Réfrigérateur", "Douche de pont", "Système audio Bluetooth", "Cabine / espace privé avec WC", "Nombreux espaces de rangement"],
+          en: ["Up to 10 passengers (excluding skipper)", "Rental with professional skipper", "Large forward sun deck", "Aft lounge with large table", "Bathing platform with ladder", "Sun awning", "Refrigerator", "Deck shower", "Bluetooth audio system", "Cabin / private space with WC", "Ample storage space"],
+          it: ["Fino a 10 passeggeri (escluso skipper)", "Noleggio con skipper professionista", "Ampio prendisole di prua", "Salotto poppiero con grande tavolo", "Piattaforma da bagno con scaletta", "Tendalino parasole", "Frigorifero", "Doccia di coperta", "Impianto audio Bluetooth", "Cabina / spazio privato con WC", "Numerosi spazi portaoggetti"]
+        },
+        tarifs: { type: "demande" },
+        infos: { fr: ["Modes de paiement : CB et espèces"], en: ["Payment: card and cash"], it: ["Pagamento: carta e contanti"] }
+      }
+    ]
+  }
+};
+
+</script>
+<script>
+/* ============================================================
+   BRISTOL MARINE — Location : rendu + langues + galeries
+   (LOCATION est défini dans flotte.js, chargé avant)
+   ============================================================ */
+(function(){
+  "use strict";
+  var TEL = "+33612797247", TEL_H = "06 12 79 72 47";
+  var MAIL = "contact@bristolmarine.fr";
+  var WA = "33612797247";
+
+  var UI = {
+    tabsOrder: ["sans-permis","avec-permis","avec-skipper"],
+    t: {
+      eyebrow: { fr:"Location", en:"Rental", it:"Noleggio" },
+      title:   { fr:["Prenez le large,","à votre rythme."], en:["Set sail,","at your own pace."], it:["Prendete il largo,","al vostro ritmo."] },
+      sub: {
+        fr:"Sans permis, avec permis ou avec skipper — au départ du Port des Fourmis à Beaulieu-sur-Mer. Choisissez la formule qui vous ressemble.",
+        en:"No licence, with licence or with skipper — departing from Port des Fourmis in Beaulieu-sur-Mer. Choose the formula that suits you.",
+        it:"Senza patente, con patente o con skipper — in partenza dal Port des Fourmis a Beaulieu-sur-Mer. Scegliete la formula che fa per voi."
+      },
+      cap:   { fr:"pers.", en:"pers.", it:"pers." },
+      more:  { fr:"Voir le détail +", en:"See details +", it:"Vedi dettagli +" },
+      less:  { fr:"Réduire −", en:"Show less −", it:"Riduci −" },
+      equip: { fr:"Équipements", en:"Equipment", it:"Dotazioni" },
+      tarifs:{ fr:"Tarifs", en:"Rates", it:"Tariffe" },
+      infos: { fr:"Informations", en:"Information", it:"Informazioni" },
+      demande:{ fr:"Tarif sur demande", en:"Rate on request", it:"Tariffa su richiesta" },
+      resa:  { fr:"Réserver", en:"Book", it:"Prenota" },
+      photos:{ fr:"Photos à venir", en:"Photos coming soon", it:"Foto in arrivo" }
+    }
+  };
+
+  var LANG = (localStorage.getItem("brm-lang") || "fr");
+  if (["fr","en","it"].indexOf(LANG) < 0) LANG = "fr";
+  var CAT = "sans-permis";
+
+  function mailHref(boat){
+    var subj = encodeURIComponent("Réservation — " + boat);
+    var body = encodeURIComponent("Bonjour,\n\nJe souhaite réserver le " + boat + ".\n\nDate souhaitée : \nNombre de personnes : \n\nMerci de me confirmer la disponibilité.\n");
+    return "mailto:" + MAIL + "?subject=" + subj + "&body=" + body;
+  }
+  function waHref(boat){
+    return "https://wa.me/" + WA + "?text=" + encodeURIComponent("Bonjour, je souhaite réserver le " + boat + " chez Bristol Marine.");
+  }
+
+  function el(html){ var d=document.createElement("div"); d.innerHTML=html.trim(); return d.firstChild; }
+  function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+  function renderBoat(boat, catLabel){
+    var card = document.createElement("article");
+    card.className = "boat";
+
+    // galerie
+    var gal = '<div class="boat__gallery"><span class="boat__cat">'+esc(catLabel)+'</span>';
+    if (boat.photos.length){
+      boat.photos.forEach(function(p,i){
+        gal += '<img src="f/'+p+'.jpg" alt="'+esc(boat.name)+'" loading="lazy" class="'+(i===0?"on":"")+'">';
+      });
+      if (boat.photos.length>1){
+        gal += '<div class="boat__nav"><button data-d="-1">‹</button><button data-d="1">›</button></div>';
+        gal += '<div class="boat__dots">'+boat.photos.map(function(_,i){return '<i class="'+(i===0?"on":"")+'" data-i="'+i+'"></i>';}).join("")+'</div>';
+      }
+    } else {
+      gal += '<div class="boat__ph"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".8"><path d="M2 19l3-8h14l3 8"/><path d="M5 11V7a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v4"/><line x1="2" y1="19" x2="22" y2="19"/></svg><span>'+esc(UI.t.photos[LANG])+'</span></div>';
+    }
+    gal += '</div>';
+
+    // specs
+    var specs = [];
+    if (boat.length) specs.push('<span class="boat__spec"><strong>'+esc(boat.length)+'</strong></span>');
+    if (boat.cap) specs.push('<span class="boat__spec"><strong>'+esc(boat.cap)+'</strong> '+esc(UI.t.cap[LANG])+'</span>');
+    if (boat.power) specs.push('<span class="boat__spec"><strong>'+esc(boat.power)+'</strong></span>');
+
+    // équipements
+    var eq = boat.equip[LANG].map(function(e){return '<li>'+esc(e)+'</li>';}).join("");
+
+    // tarifs
+    var tar = '';
+    if (boat.tarifs.type === "grille"){
+      tar += '<div class="boat__tarifs">';
+      if (boat.tarifs.note) tar += '<div class="boat__tarif-note">'+esc(boat.tarifs.note[LANG])+'</div>';
+      boat.tarifs.rows.forEach(function(r){
+        tar += '<div class="boat__tarif-row"><span class="k">'+esc(r.k[LANG])+'</span><span class="v">'+esc(r.v)+'</span></div>';
+      });
+      tar += '</div>';
+    } else {
+      tar += '<div class="boat__tarifs"><div class="boat__demande">'+esc(UI.t.demande[LANG])+'</div></div>';
+    }
+
+    var infos = boat.infos[LANG].map(function(i){return '<li>'+esc(i)+'</li>';}).join("");
+
+    card.appendChild(el(gal));
+    var body = el(
+      '<div class="boat__body">'+
+        '<div class="boat__name">'+esc(boat.name)+'</div>'+
+        (specs.length?'<div class="boat__specs">'+specs.join("")+'</div>':'')+
+        '<p class="boat__desc clamp">'+esc(boat.desc[LANG])+'</p>'+
+        '<button class="boat__more">'+esc(UI.t.more[LANG])+'</button>'+
+        '<div class="boat__extra hidden">'+
+          '<div class="boat__block"><h4>'+esc(UI.t.equip[LANG])+'</h4><ul class="boat__eq">'+eq+'</ul></div>'+
+          '<div class="boat__block"><h4>'+esc(UI.t.tarifs[LANG])+'</h4>'+tar+'</div>'+
+          '<div class="boat__block"><h4>'+esc(UI.t.infos[LANG])+'</h4><ul class="boat__infos">'+infos+'</ul></div>'+
+        '</div>'+
+        '<div class="boat__cta">'+
+          '<a class="resa" href="'+mailHref(boat.name)+'">'+esc(UI.t.resa[LANG])+'</a>'+
+          '<a class="wa" href="'+waHref(boat.name)+'" target="_blank" rel="noopener">WhatsApp</a>'+
+        '</div>'+
+      '</div>'
+    );
+    card.appendChild(body);
+
+    // galerie interactions
+    var imgs = card.querySelectorAll(".boat__gallery img");
+    var dots = card.querySelectorAll(".boat__dots i");
+    var cur = 0;
+    function show(i){
+      if (!imgs.length) return;
+      cur = (i+imgs.length)%imgs.length;
+      imgs.forEach(function(im,k){ im.classList.toggle("on",k===cur); });
+      dots.forEach(function(d,k){ d.classList.toggle("on",k===cur); });
+    }
+    card.querySelectorAll(".boat__nav button").forEach(function(b){
+      b.addEventListener("click",function(){ show(cur+parseInt(b.getAttribute("data-d"),10)); });
+    });
+    dots.forEach(function(d){ d.addEventListener("click",function(){ show(parseInt(d.getAttribute("data-i"),10)); }); });
+
+    // voir le détail
+    var more = card.querySelector(".boat__more");
+    var extra = card.querySelector(".boat__extra");
+    var desc = card.querySelector(".boat__desc");
+    more.addEventListener("click",function(){
+      var open = extra.classList.toggle("hidden")===false;
+      desc.classList.toggle("clamp",!open);
+      more.textContent = open ? UI.t.less[LANG] : UI.t.more[LANG];
+    });
+
+    return card;
+  }
+
+  function render(){
+    var host = document.getElementById("locGrid");
+    if (!host) return;
+    host.innerHTML = "";
+    var cat = LOCATION[CAT];
+    var intro = document.getElementById("locIntro");
+    if (intro) intro.textContent = cat.intro[LANG];
+    cat.boats.forEach(function(b){ host.appendChild(renderBoat(b, cat.label[LANG])); });
+
+    // textes UI
+    var t = UI.t;
+    setText("locEyebrow", t.eyebrow[LANG]);
+    var h2 = document.getElementById("locTitle");
+    if (h2) h2.innerHTML = esc(t.title[LANG][0])+'<br><em>'+esc(t.title[LANG][1])+'</em>';
+    setText("locSub", t.sub[LANG]);
+    // onglets
+    UI.tabsOrder.forEach(function(c){
+      var b = document.querySelector('.loc__tab[data-cat="'+c+'"]');
+      if (b){ b.textContent = LOCATION[c].label[LANG]; b.classList.toggle("on", c===CAT); }
+    });
+    // langue active
+    document.querySelectorAll(".lang-switch button").forEach(function(b){
+      b.classList.toggle("on", b.getAttribute("data-l")===LANG);
+    });
+    document.documentElement.lang = LANG;
+  }
+  function setText(id,v){ var e=document.getElementById(id); if(e) e.textContent=v; }
+
+  function setLang(l){ LANG=l; localStorage.setItem("brm-lang",l); render(); }
+  function setCat(c){ CAT=c; render(); }
+
+  window.addEventListener("DOMContentLoaded", function(){
+    document.querySelectorAll(".loc__tab").forEach(function(b){
+      b.addEventListener("click", function(){ setCat(b.getAttribute("data-cat")); });
+    });
+    document.querySelectorAll(".lang-switch button").forEach(function(b){
+      b.addEventListener("click", function(){ setLang(b.getAttribute("data-l")); });
+    });
+    render();
+  });
+})();
+
+</script>
 </body>
 </html>
